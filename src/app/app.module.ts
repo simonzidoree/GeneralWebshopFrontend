@@ -9,12 +9,14 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './shared/guards/auth.guard';
 import {AuthenticationService} from './shared/services/authentication.service';
+import {AdminComponent} from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
