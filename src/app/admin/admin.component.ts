@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../shared/services/product.service';
+import {Product} from '../shared/models/product';
 
 @Component({
   selector: 'app-admin',
@@ -7,10 +9,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() {
+  products: Product[];
+
+  constructor(private productService: ProductService) {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
+    this.productService.getProducts()
+      .subscribe(listOfProducts => {
+        this.products = listOfProducts;
+      });
   }
 
 }

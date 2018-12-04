@@ -1,3 +1,37 @@
-<p>
-  admin works!
-</p>
+<div class="container col-10">
+  <div class="row">
+    <button class="btn btn-primary mt-3" routerLink="/product-add">Add product</button>
+  </div>
+
+  <div *ngIf="!products" class="row">
+    <!--<progressbar class="mt-5 col-12 pr-0 pl-0" [value]="100" type="success" [striped]="true" [animate]="true">Loading-->
+    <!--products...-->
+    <!--</progressbar>-->
+    <p>No products found</p>
+  </div>
+
+  <div *ngIf="products" class="row mt-1">
+    <div *ngFor="let product of products" class="col-4 pl-1 pr-1 mt-3">
+      <div class="card">
+        <div class="card-header">
+          ID - {{product.id}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{product.title}} {{product.description}}</h5>
+
+          <div class="btn-toolbar justify-content-between" role="toolbar">
+            <div class="btn-group" role="group">
+              <button class="btn btn-primary" routerLink="/products/{{product.id}}">Details...</button>
+            </div>
+            <div class="btn-group2">
+              <button class="btn btn-info mr-1" routerLink="/product-update/{{product.id}}">Update</button>
+              <button (click)="delete(product.id)" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
