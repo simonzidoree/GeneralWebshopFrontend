@@ -12,6 +12,7 @@ import {AuthenticationService} from './shared/services/authentication.service';
 import {AdminComponent} from './admin/admin.component';
 import {ProductAddComponent} from './admin/products/product-add/product-add.component';
 import {ButtonsModule, ProgressbarModule} from 'ngx-bootstrap';
+import {ProductUpdateComponent} from './admin/products/product-update/product-update.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ButtonsModule, ProgressbarModule} from 'ngx-bootstrap';
     LoginComponent,
     HomeComponent,
     AdminComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,

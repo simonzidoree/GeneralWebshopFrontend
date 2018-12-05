@@ -16,14 +16,14 @@
           ID - {{product.id}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{product.title}} {{product.description}} {{product.price}}</h5>
+          <h5 class="card-title">{{product.title}} {{product.description}} {{product.price}} {{product.featured}}</h5>
 
           <div class="btn-toolbar justify-content-between" role="toolbar">
             <div class="btn-group" role="group">
-              <button class="btn btn-primary" routerLink="/products/{{product.id}}">Details...</button>
+              <button class="btn btn-primary" routerLink="/admin/products/{{product.id}}">Details...</button>
             </div>
             <div class="btn-group2">
-              <button class="btn btn-info mr-1" routerLink="/product-update/{{product.id}}">Update</button>
+              <button class="btn btn-info mr-1" routerLink="/admin/product-update/{{product.id}}">Edit</button>
               <button (click)="delete(product.id)" class="btn btn-danger">Delete</button>
             </div>
           </div>
