@@ -4,11 +4,13 @@ import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {AdminComponent} from './admin/admin.component';
 import {AuthGuard} from './shared/guards/auth.guard';
+import {ProductAddComponent} from './admin/products/product-add/product-add.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: HomeComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'admin/product-add', component: ProductAddComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

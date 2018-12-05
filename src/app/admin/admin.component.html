@@ -1,13 +1,12 @@
 <div class="container col-10">
   <div class="row">
-    <button class="btn btn-primary mt-3" routerLink="/product-add">Add product</button>
+    <button class="btn btn-primary mt-3" routerLink="/admin/product-add">Add product</button>
   </div>
 
   <div *ngIf="!products" class="row">
-    <!--<progressbar class="mt-5 col-12 pr-0 pl-0" [value]="100" type="success" [striped]="true" [animate]="true">Loading-->
-    <!--products...-->
-    <!--</progressbar>-->
-    <p>No products found</p>
+    <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">Loading
+      products...
+    </progressbar>
   </div>
 
   <div *ngIf="products" class="row mt-1">
@@ -17,7 +16,7 @@
           ID - {{product.id}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{product.title}} {{product.description}}</h5>
+          <h5 class="card-title">{{product.title}} {{product.description}} {{product.price}}</h5>
 
           <div class="btn-toolbar justify-content-between" role="toolbar">
             <div class="btn-group" role="group">

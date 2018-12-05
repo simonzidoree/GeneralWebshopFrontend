@@ -26,4 +26,12 @@ export class ProductService {
 
     return this.http.get<Product[]>(environment.apiUrl + '/api/products', httpOptions);
   }
+
+  addProduct(product: Product): Observable<Product> {
+    httpOptions.headers =
+      httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
+
+    return this.http.post<Product>(environment.apiUrl + '/api/products', product, httpOptions);
+  }
+
 }
