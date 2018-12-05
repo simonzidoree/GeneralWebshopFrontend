@@ -20,6 +20,7 @@ export class ProductUpdateComponent implements OnInit {
     amountInStock: new FormControl(''),
     featured: new FormControl('')
   });
+  productFeatured: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -39,6 +40,7 @@ export class ProductUpdateComponent implements OnInit {
           amountInStock: productFromRest.amountInStock,
           featured: productFromRest.featured
         });
+        this.productFeatured = productFromRest.featured;
       });
   }
 

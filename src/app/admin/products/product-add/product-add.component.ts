@@ -18,6 +18,7 @@ export class ProductAddComponent implements OnInit {
     amountInStock: new FormControl(''),
     featured: new FormControl('')
   });
+  productFeatured: any;
 
 
   constructor(private productService: ProductService,
@@ -25,6 +26,7 @@ export class ProductAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productFeatured = false;
   }
 
   save() {
