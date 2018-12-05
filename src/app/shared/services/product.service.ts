@@ -34,4 +34,10 @@ export class ProductService {
     return this.http.post<Product>(environment.apiUrl + '/api/products', product, httpOptions);
   }
 
+  deleteProduct(id: number): Observable<any> {
+    httpOptions.headers =
+      httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
+
+    return this.http.delete(environment.apiUrl + '/api/products/' + id, httpOptions);
+  }
 }

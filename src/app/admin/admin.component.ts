@@ -25,4 +25,12 @@ export class AdminComponent implements OnInit {
       });
   }
 
+  delete(id: number) {
+    this.productService.deleteProduct(id)
+      .subscribe(() => {
+        this.refresh();
+      });
+  }
+
+
 }
