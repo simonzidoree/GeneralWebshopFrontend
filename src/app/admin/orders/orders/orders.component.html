@@ -1,0 +1,34 @@
+<div class="container col-10">
+  <button class="btn btn-secondary mt-3" routerLink="/admin">Back</button>
+
+  <div *ngIf="!orders" class="row">
+    <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">Loading
+      orders...
+    </progressbar>
+  </div>
+
+  <div *ngIf="orders" class="row mt-1">
+    <div *ngFor="let order of orders" class="col-4 pl-1 pr-1 mt-3">
+      <div class="card">
+        <div class="card-header">
+          ID - {{order.id}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{order.fullName}}</h5>
+
+          <div class="btn-toolbar justify-content-between" role="toolbar">
+            <div class="btn-group" role="group">
+              <button class="btn btn-primary" routerLink="/admin/orders/{{order.id}}">Details...</button>
+            </div>
+            <div class="btn-group2">
+              <button class="btn btn-info mr-1" routerLink="/admin/order-update/{{order.id}}">Edit</button>
+              <button (click)="delete(order.id)" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

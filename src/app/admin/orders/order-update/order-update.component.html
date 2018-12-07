@@ -1,0 +1,77 @@
+<div class="container col-6">
+  <div class="row">
+    <button class="btn btn-secondary mt-3" routerLink="/admin/orders">Back</button>
+  </div>
+
+
+  <div class="justify-content-center mt-5">
+    <form (ngSubmit)="save()" [formGroup]="orderForm">
+
+      <label for="orderNumberForm">Order number:</label>
+      <input class="form-control" formControlName="orderNumber" id="orderNumberForm" placeholder="Enter order number"
+             type="number">
+
+      <label class="mt-2" for="fullNameForm">Full name:</label>
+      <input class="form-control" formControlName="fullName" id="fullNameForm"
+             placeholder="Enter full name of orders customer"
+             type="text">
+
+      <label class="mt-2" for="addressForm">Address:</label>
+      <input class="form-control" formControlName="address" id="addressForm"
+             placeholder="Enter the address of orders customer"
+             type="text">
+
+      <label class="mt-2" for="zipcodeForm">Zip code:</label>
+      <input class="form-control" formControlName="zipcode" id="zipcodeForm"
+             placeholder="Enter the zip code of orders customer"
+             type="number">
+
+      <label class="mt-2" for="cityForm">City:</label>
+      <input class="form-control" formControlName="city" id="cityForm"
+             placeholder="Enter the city of orders customer"
+             type="text">
+
+      <label class="mt-2" for="countryForm">Country:</label>
+      <input class="form-control" formControlName="country" id="countryForm"
+             placeholder="Enter the country of orders customer"
+             type="text">
+
+      <label class="mt-2" for="phoneNumberForm">Phone number:</label>
+      <input class="form-control" formControlName="phoneNumber" id="phoneNumberForm"
+             placeholder="Enter the phone number of orders customer"
+             type="tel">
+
+      <label class="mt-2" for="emailForm">Email:</label>
+      <input class="form-control" formControlName="email" id="emailForm"
+             placeholder="Enter the email of orders customer"
+             type="email">
+
+      <label class="mt-2" for="commentForm">Comment:</label>
+      <input class="form-control" formControlName="comment" id="commentForm"
+             placeholder="Enter the comment for the order of the customer"
+             type="text">
+
+      <label class="mt-2" for="orderDateForm">Order date:</label>
+      <input class="form-control" formControlName="orderDate" id="orderDateForm"
+             placeholder="Enter the order date of orders customer"
+             type="text">
+
+      <label class="mt-3" for="RadioNo">Are the order delivered?</label>
+      <div>
+        <div class="form-check">
+          <input [(ngModel)]="orderDelivered" [value]="false" class="form-check-input" formControlName="isDelivered"
+                 id="RadioNo" type="radio">
+          <label class="form-check-label" for="RadioNo">No</label>
+        </div>
+        <div class="form-check">
+          <input [(ngModel)]="orderDelivered" [value]="true" class="form-check-input" formControlName="isDelivered"
+                 id="RadioYes" type="radio">
+          <label class="form-check-label" for="RadioYes">Yes</label>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block mt-3" type="submit">Edit order</button>
+    </form>
+
+  </div>
+</div>

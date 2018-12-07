@@ -11,8 +11,10 @@ import {AuthGuard} from './shared/guards/auth.guard';
 import {AuthenticationService} from './shared/services/authentication.service';
 import {AdminComponent} from './admin/admin.component';
 import {ProductAddComponent} from './admin/products/product-add/product-add.component';
-import {ButtonsModule, ProgressbarModule} from 'ngx-bootstrap';
+import {ButtonsModule, ProgressbarModule, TabsModule} from 'ngx-bootstrap';
 import {ProductUpdateComponent} from './admin/products/product-update/product-update.component';
+import {OrdersComponent} from './admin/orders/orders/orders.component';
+import {OrderUpdateComponent} from './admin/orders/order-update/order-update.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {ProductUpdateComponent} from './admin/products/product-update/product-up
     HomeComponent,
     AdminComponent,
     ProductAddComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    OrdersComponent,
+    OrderUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,8 @@ import {ProductUpdateComponent} from './admin/products/product-update/product-up
     HttpClientModule,
     FormsModule,
     ButtonsModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [
     AuthGuard,
