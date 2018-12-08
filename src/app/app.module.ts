@@ -11,10 +11,11 @@ import {AuthGuard} from './shared/guards/auth.guard';
 import {AuthenticationService} from './shared/services/authentication.service';
 import {AdminComponent} from './admin/admin.component';
 import {ProductAddComponent} from './admin/products/product-add/product-add.component';
-import {ButtonsModule, ProgressbarModule, TabsModule} from 'ngx-bootstrap';
+import {ButtonsModule, PopoverModule, ProgressbarModule, TabsModule} from 'ngx-bootstrap';
 import {ProductUpdateComponent} from './admin/products/product-update/product-update.component';
 import {OrdersComponent} from './admin/orders/orders/orders.component';
 import {OrderUpdateComponent} from './admin/orders/order-update/order-update.component';
+import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {OrderUpdateComponent} from './admin/orders/order-update/order-update.com
     ProductAddComponent,
     ProductUpdateComponent,
     OrdersComponent,
-    OrderUpdateComponent
+    OrderUpdateComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import {OrderUpdateComponent} from './admin/orders/order-update/order-update.com
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    PopoverModule.forRoot(),
     ButtonsModule.forRoot(),
     ProgressbarModule.forRoot(),
     TabsModule.forRoot()

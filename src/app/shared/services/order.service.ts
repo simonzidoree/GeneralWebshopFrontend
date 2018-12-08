@@ -51,7 +51,6 @@ export class OrderService {
   updateOrder(order: Order): Observable<Order> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-
     return this.http.put<Order>(environment.apiUrl + '/api/orders/' + order.id, order, httpOptions);
   }
 }
