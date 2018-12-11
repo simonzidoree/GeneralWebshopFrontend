@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
+  <a class="navbar-brand"><img
+    alt="Petshop"
+    height="30" src="" width="30"></a>
+  <button (click)="toggleCollapse()" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+          class="navbar-toggler collapsed" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [class.collapse]="isCollapsed" class="navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/owners">Owners</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/pets">Pets</a>
+      </li>
+    </ul>
+  </div>
+</nav>

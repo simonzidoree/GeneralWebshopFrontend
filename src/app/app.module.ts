@@ -16,6 +16,7 @@ import {ProductUpdateComponent} from './admin/products/product-update/product-up
 import {OrdersComponent} from './admin/orders/orders/orders.component';
 import {OrderUpdateComponent} from './admin/orders/order-update/order-update.component';
 import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.component';
+import {NavbarComponent} from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.com
     ProductUpdateComponent,
     OrdersComponent,
     OrderUpdateComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
