@@ -17,6 +17,21 @@ import {OrdersComponent} from './admin/orders/orders/orders.component';
 import {OrderUpdateComponent} from './admin/orders/order-update/order-update.component';
 import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.component';
 import {NavbarComponent} from './shared/navbar/navbar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  NbActionsModule,
+  NbButtonModule,
+  NbCardModule,
+  NbLayoutModule,
+  NbProgressBarModule,
+  NbSearchModule,
+  NbSearchService,
+  NbSidebarModule,
+  NbSidebarService,
+  NbSpinnerModule,
+  NbTabsetModule,
+  NbThemeModule
+} from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -40,11 +55,24 @@ import {NavbarComponent} from './shared/navbar/navbar.component';
     PopoverModule.forRoot(),
     ButtonsModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({name: 'default'}),
+    NbLayoutModule,
+    NbSidebarModule,
+    NbSearchModule,
+    NbButtonModule,
+    NbCardModule,
+    NbTabsetModule,
+    NbSpinnerModule,
+    NbProgressBarModule,
+    NbActionsModule,
   ],
   providers: [
     AuthGuard,
-    AuthenticationService
+    AuthenticationService,
+    NbSidebarService,
+    NbSearchService
   ],
   bootstrap: [AppComponent]
 })
