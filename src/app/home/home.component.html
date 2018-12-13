@@ -1,3 +1,35 @@
-<p>
-  home works!
-</p>
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<div class="container">
+  <div *ngIf="products" class="row">
+    <div *ngFor="let product of products" class="col-md-3 col-sm-6 mt-5">
+      <div class="product-grid3" style="background-color: white">
+        <div class="product-image3">
+          <a href="#">
+            <img class="pic-1" src="{{product.image}}" alt=""/>
+          </a>
+          <ul class="social">
+            <li><a href="#"><i class="fa fa-eye"></i></a></li>
+            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+          </ul>
+          <span class="product-new-label">Featured</span>
+        </div>
+        <div class="product-content">
+          <h3 class="title"><a href="#">{{product.title}}</a></h3>
+          <div class="price">
+            {{product.price}},- DKK
+          </div>
+          <h6 class="amountInStock">
+            På lager:
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <app-footer></app-footer>
+</div>

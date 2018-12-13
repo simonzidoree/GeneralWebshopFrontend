@@ -32,6 +32,8 @@ import {
   NbTabsetModule,
   NbThemeModule
 } from '@nebular/theme';
+import {FooterComponent} from './shared/footer/footer.component';
+import {ProductDetailComponent} from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {
     OrdersComponent,
     OrderUpdateComponent,
     OrderDetailComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -76,4 +80,5 @@ import {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
