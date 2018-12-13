@@ -1,7 +1,10 @@
 <nb-layout windowMode>
 
   <nb-layout-header fixed>
-    General Webshop
+    <nb-actions size="small">
+      <nb-action icon="fa fa-arrow-left" routerLink="/admin"></nb-action>
+      <nb-action>General Webshop</nb-action>
+    </nb-actions>
   </nb-layout-header>
 
   <nb-layout-column>
@@ -21,13 +24,17 @@
 
                 <nb-card>
                   <nb-card-header>
-                    ID - {{order.id}}
+                    <div>
+                      <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
+                      <span class="float-right">ID: {{order.id}}</span>
+                    </div>
                   </nb-card-header>
                   <nb-card-body>
-                    <h5>{{order.fullName}}</h5>
+                    <h5>Købt d. {{order.orderDate}} af {{order.fullName}}.</h5>
+                    <h5>Skal leveres til: </h5><span>{{order.address}}, {{order.zipcode}} {{order.city}}
+                    , {{order.country}}</span>
                   </nb-card-body>
                   <nb-card-footer>
-
                     <div class="btn-group d-flex">
                       <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.id}}">Details</button>
                       <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.id}}">Edit</button>
@@ -54,10 +61,15 @@
 
                   <nb-card>
                     <nb-card-header>
-                      ID - {{order.id}}
+                      <div>
+                        <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
+                        <span class="float-right">ID: {{order.id}}</span>
+                      </div>
                     </nb-card-header>
                     <nb-card-body>
-                      <h5>{{order.fullName}}</h5>
+                      <h5>Købt d. {{order.orderDate}} af {{order.fullName}}.</h5>
+                      <h5>Skal leveres til: </h5><span>{{order.address}}, {{order.zipcode}} {{order.city}}
+                      , {{order.country}}</span>
                     </nb-card-body>
                     <nb-card-footer>
 
@@ -89,10 +101,15 @@
 
                   <nb-card>
                     <nb-card-header>
-                      ID - {{order.id}}
+                      <div>
+                        <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
+                        <span class="float-right">ID: {{order.id}}</span>
+                      </div>
                     </nb-card-header>
                     <nb-card-body>
-                      <h5>{{order.fullName}}</h5>
+                      <h5>Købt d. {{order.orderDate}} af {{order.fullName}}.</h5>
+                      <h5>Skal leveres til: </h5><span>{{order.address}}, {{order.zipcode}} {{order.city}}
+                      , {{order.country}}</span>
                     </nb-card-body>
                     <nb-card-footer>
 
@@ -112,10 +129,5 @@
       </nb-tabset>
     </div>
   </nb-layout-column>
-
-  <nb-layout-footer>
-    Hello edit me please?
-  </nb-layout-footer>
-
 </nb-layout>
 

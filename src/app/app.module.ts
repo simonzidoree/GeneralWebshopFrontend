@@ -34,6 +34,7 @@ import {
 } from '@nebular/theme';
 import {FooterComponent} from './shared/footer/footer.component';
 import {ProductDetailComponent} from './products/product-detail/product-detail.component';
+import {HeaderComponent} from './admin/shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {ProductDetailComponent} from './products/product-detail/product-detail.c
     OrderDetailComponent,
     NavbarComponent,
     FooterComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

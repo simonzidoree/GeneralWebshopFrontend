@@ -23,13 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
               "node_modules/@nebular/theme/styles/prebuilt/default.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/ionicons/scss/ionicons.scss",
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/@nebular/bootstrap/styles/prebuilt/default.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -89,7 +89,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -141,5 +141,10 @@
       }
     }
   },
-  "defaultProject": "GeneralWebshopAppFrontend"
+  "defaultProject": "GeneralWebshopAppFrontend",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
