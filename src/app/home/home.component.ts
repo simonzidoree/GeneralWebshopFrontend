@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {Product} from '../shared/models/product';
 import {ProductService} from '../shared/services/product.service';
+import {CartService} from '../shared/services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   products: Product[];
 
-  constructor(private productService: ProductService, private elementRef: ElementRef) {
+  constructor(private productService: ProductService, private elementRef: ElementRef, private cartService: CartService) {
   }
 
   ngOnInit() {
@@ -23,6 +24,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       .subscribe(listOfProducts => {
         this.products = listOfProducts.filter(p => p.featured);
       });
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
   }
 
   ngAfterViewInit() {

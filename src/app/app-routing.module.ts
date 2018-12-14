@@ -10,6 +10,7 @@ import {OrdersComponent} from './admin/orders/orders/orders.component';
 import {OrderUpdateComponent} from './admin/orders/order-update/order-update.component';
 import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.component';
 import {ProductDetailComponent} from './products/product-detail/product-detail.component';
+import {CartComponent} from './cart/cart.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'admin/order-update/:id', component: OrderUpdateComponent, canActivate: [AuthGuard]},
   {path: 'admin/order/:id', component: OrderDetailComponent, canActivate: [AuthGuard]},
   {path: 'product-detail/:id', component: ProductDetailComponent},
+  {path: 'cart', component: CartComponent},
 ];
 
 @NgModule({

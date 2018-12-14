@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card">
+    <table class="table table-hover shopping-cart-wrap">
+      <thead class="text-muted">
+      <tr>
+        <th scope="col">Produkt</th>
+        <th scope="col" width="120">Antal</th>
+        <th scope="col" width="200">Pris</th>
+        <th class="text-right" scope="col" width="120">Fjern</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of cart">
+        <td>
+          <figure class="media">
+            <div class="img-wrap"><img alt="" class="img-thumbnail img-sm" src='{{product.image}}'></div>
+            <figcaption class="media-body">
+              <h6 class="title text-truncate">{{product.title}}</h6>
+            </figcaption>
+          </figure>
+        </td>
+        <td>
+          <var class="price">
+            Lav om
+          </var>
+        </td>
+        <td>
+          <div class="price-wrap">
+            <var class="price">{{product.price}},- DKK</var>
+            <small class="text-muted">(USD5 each) - Lav om</small>
+          </div> <!-- price-wrap .// -->
+        </td>
+        <td class="text-right">
+          <a class="btn btn-outline-danger" href=""> × Slet</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div> <!-- card.// -->
+</div>
