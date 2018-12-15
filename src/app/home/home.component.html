@@ -8,11 +8,12 @@
       <div class="product-grid3" style="background-color: white">
         <div class="product-image3">
           <a routerLink="product-detail/{{product.id}}">
-            <img class="pic-1" src="{{product.image}}" alt=""/>
+            <img class="pic-1" src='{{product.image}}' alt=""/>
           </a>
           <ul class="social">
             <li><a routerLink="product-detail/{{product.id}}"><i class="fa fa-eye"></i></a></li>
             <li><a (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i></a></li>
+            <!--- TODO: Maybe show a popup or something that tells the customer that the product was added.. --->
           </ul>
           <span class="product-new-label">Featured</span>
         </div>
