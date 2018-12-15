@@ -1,4 +1,8 @@
-<div class="container">
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<div class="container mt-5">
   <div class="card">
     <table class="table table-hover shopping-cart-wrap">
       <thead class="text-muted">
@@ -10,31 +14,34 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let product of cart">
-        <td>
-          <figure class="media">
-            <div class="img-wrap"><img alt="" class="img-thumbnail img-sm" src='{{product.image}}'></div>
-            <figcaption class="media-body">
-              <h6 class="title text-truncate">{{product.title}}</h6>
-            </figcaption>
-          </figure>
-        </td>
-        <td>
-          <var class="price">
-            Lav om
-          </var>
-        </td>
-        <td>
-          <div class="price-wrap">
-            <var class="price">{{product.price}},- DKK</var>
-            <small class="text-muted">(USD5 each) - Lav om</small>
-          </div> <!-- price-wrap .// -->
-        </td>
-        <td class="text-right">
-          <a class="btn btn-outline-danger" href=""> × Slet</a>
-        </td>
-      </tr>
+      <ng-container *ngFor="let product of cartProducts">
+        <tr *ngIf="product.numberOfProduct > 0">
+          <td>
+            <figure class="media">
+              <div class="img-wrap"><img alt="" class="img-thumbnail img-sm" src='{{product.product.image}}'></div>
+              <figcaption class="media-body">
+                <h6 class="title text-truncate">{{product.product.title}}</h6>
+              </figcaption>
+            </figure>
+          </td>
+          <td>
+            <var class="price">
+              {{product.numberOfProduct}}
+            </var>
+          </td>
+          <td>
+            <div class="price-wrap">
+              <var class="price">{{product.product.price * product.numberOfProduct}},- DKK</var>
+              <small class="text-muted">{{product.product.price}},- DKK</small>
+            </div>
+          </td>
+          <td class="text-right">
+            <a (click)="removeFromCart(product.product)"
+               class="btn btn-outline-danger"> × Slet 1</a>
+          </td>
+        </tr>
+      </ng-container>
       </tbody>
     </table>
-  </div> <!-- card.// -->
+  </div>
 </div>
