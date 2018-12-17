@@ -1,0 +1,113 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Indkøbskurv</span>
+        <span class="badge badge-secondary badge-pill">{{cart.length}}</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li *ngFor="let product of cartProducts" class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{product.product.title}}</h6>
+            <small class="text-muted">{{product.numberOfProduct}}x {{product.product.price}},- DKK</small>
+          </div>
+          <span class="text-muted">{{product.product.price * product.numberOfProduct}},- DKK</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h5 class="my-0">Total: </h5>
+          </div>
+          <h6 class="">{{totalPrice}},- DKK</h6>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Din information</h4>
+      <form (ngSubmit)="save()" [formGroup]="checkoutForm" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+          <label for="fullName">Navn (husk efternavn)</label>
+          <div class="input-group">
+            <input class="form-control" id="fullName" formControlName="fullName" placeholder="Lars Larsen" required
+                   type="text" value="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input class="form-control" id="email" formControlName="email" placeholder="mail@mail.dk" type="email">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phoneNumber">Telefon</label>
+          <input class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="12345678"
+                 type="number">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">adresse</label>
+          <input class="form-control" id="address" formControlName="address" placeholder="adresse 99" required
+                 type="text">
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Land</label>
+            <select class="custom-select d-block w-100" id="country" formControlName="country" required>
+              <option>Danmark</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid country.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="city">By</label>
+            <input class="form-control" id="city" formControlName="city" placeholder="Esbjerg" required type="text">
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zipcode">Postnr.</label>
+            <input class="form-control" id="zipcode" formControlName="zipcode" placeholder="6700" required
+                   type="number">
+            <div class="invalid-feedback">
+              Zip code required.
+            </div>
+          </div>
+        </div>
+
+        <hr class="mb-2">
+        <div class="mb-3">
+          <label for="comment">Kommentar</label>
+          <textarea class="form-control" id="comment" formControlName="comment" placeholder="..." required
+                    type="text"></textarea>
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+        <hr class="mb-4">
+        <!-- TODO: Remember to do some kind of payment stuff (example for thridparty or whatever) -->
+        <button class="btn btn-primary btn-lg btn-block"
+                type="submit"> Godkend ordren og betal
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

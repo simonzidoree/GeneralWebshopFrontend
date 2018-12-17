@@ -41,7 +41,24 @@
           </td>
         </tr>
       </ng-container>
+      <!-- TODO: Do design stuff -->
+      <tr>
+        <div class="card-footer">
+          <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+            <div class="row">
+            </div>
+          </div>
+          <div class="pull-right" style="margin: 10px">
+            <div class="pull-right" style="margin: 5px">
+              Total: <b>{{totalPrice}},- DKK</b>
+            </div>
+            <a routerLink="/checkout" class="btn btn-success pull-right">Gå til bestilling</a>
+          </div>
+        </div>
+      </tr>
       </tbody>
+
     </table>
+
   </div>
 </div>

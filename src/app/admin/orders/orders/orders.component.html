@@ -20,45 +20,8 @@
             </div>
 
             <div *ngIf="orders" class="row mt-4">
-              <div *ngFor="let order of orders" class="col-xxxl-3 col-md-6">
-
-                <nb-card>
-                  <nb-card-header>
-                    <div>
-                      <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
-                      <span class="float-right">ID: {{order.id}}</span>
-                    </div>
-                  </nb-card-header>
-                  <nb-card-body>
-                    <h5>Købt d. {{order.orderDate}} af {{order.fullName}}.</h5>
-                    <h5>Skal leveres til: </h5><span>{{order.address}}, {{order.zipcode}} {{order.city}}
-                    , {{order.country}}</span>
-                  </nb-card-body>
-                  <nb-card-footer>
-                    <div class="btn-group d-flex">
-                      <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.id}}">Details</button>
-                      <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.id}}">Edit</button>
-                      <button (click)="delete(order.id)" class="btn btn-danger w-100">Delete</button>
-                    </div>
-                  </nb-card-footer>
-                </nb-card>
-              </div>
-            </div>
-          </div>
-        </nb-tab>
-        <nb-tab tabTitle="Not shipped">
-          <div class="container-fluid">
-            <div *ngIf="!orders" class="row">
-              <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">
-                Loading
-                orders...
-              </progressbar>
-            </div>
-
-            <div *ngIf="orders" class="row mt-4">
-              <div *ngFor="let order of orders" class="col-xxxl-3 col-md-6">
-                <div *ngIf="order.isDelivered == false">
-
+              <ng-container *ngFor="let order of orders">
+                <div class="col-xxxl-3 col-md-6">
                   <nb-card>
                     <nb-card-header>
                       <div>
@@ -72,7 +35,6 @@
                       , {{order.country}}</span>
                     </nb-card-body>
                     <nb-card-footer>
-
                       <div class="btn-group d-flex">
                         <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.id}}">Details
                         </button>
@@ -82,10 +44,51 @@
                     </nb-card-footer>
                   </nb-card>
                 </div>
-              </div>
+              </ng-container>
             </div>
           </div>
         </nb-tab>
+
+        <nb-tab tabTitle="Not shipped">
+          <div class="container-fluid">
+            <div *ngIf="!orders" class="row">
+              <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">
+                Loading
+                orders...
+              </progressbar>
+            </div>
+            <div *ngIf="orders" class="row mt-4">
+              <ng-container *ngFor="let order of orders">
+                <ng-container *ngIf="order.isDelivered == false">
+                  <div class="col-xxxl-3 col-md-6">
+                    <nb-card>
+                      <nb-card-header>
+                        <div>
+                          <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
+                          <span class="float-right">ID: {{order.id}}</span>
+                        </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <h5>Købt d. {{order.orderDate}} af {{order.fullName}}.</h5>
+                        <h5>Skal leveres til: </h5><span>{{order.address}}, {{order.zipcode}} {{order.city}}
+                        , {{order.country}}</span>
+                      </nb-card-body>
+                      <nb-card-footer>
+                        <div class="btn-group d-flex">
+                          <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.id}}">Details
+                          </button>
+                          <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.id}}">Edit</button>
+                          <button (click)="delete(order.id)" class="btn btn-danger w-100">Delete</button>
+                        </div>
+                      </nb-card-footer>
+                    </nb-card>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </nb-tab>
+
         <nb-tab tabTitle="Shipped">
           <div class="container-fluid">
             <div *ngIf="!orders" class="row">
@@ -94,37 +97,37 @@
                 orders...
               </progressbar>
             </div>
-
             <div *ngIf="orders" class="row mt-4">
-              <div *ngFor="let order of orders" class="col-xxxl-3 col-md-6">
-                <div *ngIf="order.isDelivered == true">
+              <div class="col-xxxl-3 col-md-6">
+                <ng-container *ngFor="let order of orders">
+                  <ng-container *ngIf="order.isDelivered == true">
+                    <nb-card>
+                      <nb-card-header>
+                        <div>
+                          <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
+                          <span class="float-right">ID: {{order.id}}</span>
+                        </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <h5>Købt d. {{order.orderDate}} af {{order.fullName}}.</h5>
+                        <h5>Skal leveres til: </h5><span>{{order.address}}, {{order.zipcode}} {{order.city}}
+                        , {{order.country}}</span>
+                      </nb-card-body>
+                      <nb-card-footer>
 
-                  <nb-card>
-                    <nb-card-header>
-                      <div>
-                        <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
-                        <span class="float-right">ID: {{order.id}}</span>
-                      </div>
-                    </nb-card-header>
-                    <nb-card-body>
-                      <h5>Købt d. {{order.orderDate}} af {{order.fullName}}.</h5>
-                      <h5>Skal leveres til: </h5><span>{{order.address}}, {{order.zipcode}} {{order.city}}
-                      , {{order.country}}</span>
-                    </nb-card-body>
-                    <nb-card-footer>
-
-                      <div class="btn-group d-flex">
-                        <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.id}}">Details
-                        </button>
-                        <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.id}}">Edit</button>
-                        <button (click)="delete(order.id)" class="btn btn-danger w-100">Delete</button>
-                      </div>
-                    </nb-card-footer>
-                  </nb-card>
+                        <div class="btn-group d-flex">
+                          <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.id}}">Details
+                          </button>
+                          <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.id}}">Edit</button>
+                          <button (click)="delete(order.id)" class="btn btn-danger w-100">Delete</button>
+                        </div>
+                      </nb-card-footer>
+                    </nb-card>
+                  </ng-container>
+                </ng-container>
               </div>
             </div>
           </div>
-        </div>
         </nb-tab>
       </nb-tabset>
     </div>

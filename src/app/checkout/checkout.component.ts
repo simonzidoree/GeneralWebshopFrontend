@@ -2,19 +2,33 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from '../shared/services/cart.service';
 import {Product} from '../shared/models/product';
 import {CartProduct} from '../shared/models/cartProduct';
+import {FormControl, FormGroup} from '@angular/forms';
+import {OrderService} from '../shared/services/order.service';
+import {Order} from '../shared/models/order';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
 
   cart: Product[] = [];
   cartProducts: CartProduct[] = [];
   totalPrice = 0;
 
-  constructor(private cartService: CartService) {
+  checkoutForm = new FormGroup({
+    fullName: new FormControl(''),
+    email: new FormControl(''),
+    phoneNumber: new FormControl(''),
+    address: new FormControl(''),
+    country: new FormControl(''),
+    city: new FormControl(''),
+    zipcode: new FormControl(''),
+    comment: new FormControl('')
+  });
+
+  constructor(private cartService: CartService, private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -32,23 +46,16 @@ export class CartComponent implements OnInit {
       this.cartProducts.push(cartProduct);
     }
 
-
     for (const productPrice of this.cartProducts) {
       this.totalPrice = this.totalPrice + (productPrice.product.price * productPrice.numberOfProduct);
     }
   }
 
-  removeFromCart(product: Product) {
-    this.cartService.removeFromCart(product);
-    this.cartProducts.find(value => value.product === product).numberOfProduct--;
-
-    if (this.cartProducts.find(value => value.product === product).numberOfProduct === 0) {
-      this.cartProducts.splice(this.cartProducts.findIndex(value => value.product === product), 1);
-    }
-
-    this.totalPrice = 0;
-    for (const productPrice of this.cartProducts) {
-      this.totalPrice = this.totalPrice + (productPrice.product.price * productPrice.numberOfProduct);
-    }
+  save() {
+    const order: Order = this.checkoutForm.value;
+    order.products = this.cart;
+    this.orderService.addOrder(order)
+      .subscribe(() => {
+      });
   }
 }
