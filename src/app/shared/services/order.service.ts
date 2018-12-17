@@ -34,23 +34,23 @@ export class OrderService {
     return this.http.post<Order>(environment.apiUrl + '/api/orders', order, httpOptions);
   }
 
-  deleteOrder(id: number): Observable<any> {
+  deleteOrder(orderId: number): Observable<any> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
 
-    return this.http.delete(environment.apiUrl + '/api/orders/' + id, httpOptions);
+    return this.http.delete(environment.apiUrl + '/api/orders/' + orderId, httpOptions);
   }
 
-  getOrderById(id: number): Observable<Order> {
+  getOrderById(orderId: number): Observable<Order> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
 
-    return this.http.get<Order>(environment.apiUrl + '/api/orders/' + id, httpOptions);
+    return this.http.get<Order>(environment.apiUrl + '/api/orders/' + orderId, httpOptions);
   }
 
   updateOrder(order: Order): Observable<Order> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.put<Order>(environment.apiUrl + '/api/orders/' + order.id, order, httpOptions);
+    return this.http.put<Order>(environment.apiUrl + '/api/orders/' + order.orderId, order, httpOptions);
   }
 }

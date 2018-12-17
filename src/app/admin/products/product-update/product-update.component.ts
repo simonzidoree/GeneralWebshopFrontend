@@ -46,7 +46,7 @@ export class ProductUpdateComponent implements OnInit {
 
   save() {
     const product = this.productForm.value;
-    product.id = this.id;
+    product.productId = this.id;
     this.productService.updateProduct(product)
       .subscribe(() => {
         this.router.navigateByUrl('/admin');

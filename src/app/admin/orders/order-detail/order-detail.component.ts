@@ -18,8 +18,8 @@ export class OrderDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.orderService.getOrderById(id)
+    const orderId = +this.route.snapshot.paramMap.get('orderId');
+    this.orderService.getOrderById(orderId)
       .subscribe(orderFromRest => {
         this.order = orderFromRest;
         this.disabled = orderFromRest.isDelivered;

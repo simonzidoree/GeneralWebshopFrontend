@@ -33,7 +33,7 @@ export class OrderUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
+    this.id = +this.route.snapshot.paramMap.get('orderId');
 
     this.orderService.getOrderById(this.id)
       .subscribe(orderFromRest => {
@@ -55,7 +55,7 @@ export class OrderUpdateComponent implements OnInit {
 
   save() {
     const order = this.orderForm.value;
-    order.id = this.id;
+    order.orderId = this.id;
     this.orderService.updateOrder(order)
       .subscribe(() => {
         this.router.navigateByUrl('/admin/orders');

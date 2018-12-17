@@ -30,7 +30,7 @@
             <nb-card-header>
               <div>
                 <span class="float-left">{{product.title}}</span>
-                <span class="float-right">ID: {{product.id}}</span>
+                <span class="float-right">ID: {{product.productId}}</span>
               </div>
             </nb-card-header>
             <nb-card-body>
@@ -48,8 +48,9 @@
             </nb-card-body>
             <nb-card-footer>
               <div class="btn-group d-flex">
-                <button class="btn btn-info mr-1 w-100" routerLink="/admin/product-update/{{product.id}}">Edit</button>
-                <button (click)="delete(product.id)" class="btn btn-danger w-100">Delete</button>
+                <button class="btn btn-info mr-1 w-100" routerLink="/admin/product-update/{{product.productId}}">Edit
+                </button>
+                <button (click)="delete(product.productId)" class="btn btn-danger w-100">Delete</button>
               </div>
             </nb-card-footer>
           </nb-card>
