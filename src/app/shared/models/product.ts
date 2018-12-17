@@ -6,4 +6,5 @@ export class Product {
   image: string;
   amountInStock: number;
   featured: boolean;
+  category: string;
 }

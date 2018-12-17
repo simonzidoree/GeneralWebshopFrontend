@@ -20,7 +20,8 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.cart = JSON.parse(this.cartService.getFromCart());
 
-    const allProductIds = this.cart.map(p => p.productId).filter((value, index, array) => index === array.indexOf(value));
+    const allProductIds = this.cart.map(p => p.productId)
+      .filter((value, index, array) => index === array.indexOf(value));
     for (const allProductId of allProductIds) {
       const amountOfSpecificProduct = this.cart.filter(value => value.productId === allProductId).length;
 

@@ -13,10 +13,8 @@
           Produkter
         </a>
         <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a *ngFor="let category of productCategories" class="dropdown-item"
+             routerLink="/products/{{category}}">{{category}}</a>
         </div>
       </li>
     </ul>

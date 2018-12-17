@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../services/product.service';
+import {Product} from '../models/product';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +9,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() {
+  products: Product[];
+  productCategories: string[] = [];
+
+  constructor(private productService: ProductService) {
   }
 
   ngOnInit() {
+    this.productService.getProducts()
+      .subscribe(listOfProducts => {
+        this.products = listOfProducts;
 
+        this.productCategories = this.products.map(value => value.category)
+          .filter((value, index, array) => index === array.indexOf(value));
+      });
   }
 }

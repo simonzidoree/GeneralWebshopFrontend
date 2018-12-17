@@ -37,6 +37,7 @@ import {ProductDetailComponent} from './products/product-detail/product-detail.c
 import {HeaderComponent} from './admin/shared/header/header.component';
 import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {ProductsComponent} from './products/products/products.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {CheckoutComponent} from './checkout/checkout.component';
     ProductDetailComponent,
     HeaderComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

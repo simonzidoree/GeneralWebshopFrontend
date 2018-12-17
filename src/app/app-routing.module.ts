@@ -12,6 +12,7 @@ import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.com
 import {ProductDetailComponent} from './products/product-detail/product-detail.component';
 import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {ProductsComponent} from './products/products/products.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'admin/order-update/:orderId', component: OrderUpdateComponent, canActivate: [AuthGuard]},
   {path: 'admin/order/:orderId', component: OrderDetailComponent, canActivate: [AuthGuard]},
   {path: 'product-detail/:productId', component: ProductDetailComponent},
+  {path: 'products/:productCategory', component: ProductsComponent},
   {path: 'cart', component: CartComponent},
   {path: 'checkout', component: CheckoutComponent},
 ];
