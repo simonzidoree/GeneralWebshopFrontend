@@ -25,8 +25,8 @@ export class AdminComponent implements OnInit {
       });
   }
 
-  delete(id: number) {
-    this.productService.deleteProduct(id)
+  delete(productId: number) {
+    this.productService.deleteProduct(productId)
       .subscribe(() => {
         this.refresh();
       });

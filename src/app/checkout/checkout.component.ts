@@ -54,6 +54,7 @@ export class CheckoutComponent implements OnInit {
   save() {
     const order: Order = this.checkoutForm.value;
     // order.products = this.cart;
+    // debugger;
     this.orderService.addOrder(order)
       .subscribe(() => {
       });

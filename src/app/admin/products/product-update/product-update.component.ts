@@ -10,7 +10,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ProductUpdateComponent implements OnInit {
 
-  id: number;
+  productId: number;
 
   productForm = new FormGroup({
     title: new FormControl(''),
@@ -28,9 +28,9 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
+    this.productId = +this.route.snapshot.paramMap.get('productId');
 
-    this.productService.getProductById(this.id)
+    this.productService.getProductById(this.productId)
       .subscribe(productFromRest => {
         this.productForm.patchValue({
           title: productFromRest.title,
@@ -46,7 +46,7 @@ export class ProductUpdateComponent implements OnInit {
 
   save() {
     const product = this.productForm.value;
-    product.productId = this.id;
+    product.productId = this.productId;
     this.productService.updateProduct(product)
       .subscribe(() => {
         this.router.navigateByUrl('/admin');
