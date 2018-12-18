@@ -5,6 +5,7 @@ import {CartProduct} from '../shared/models/cartProduct';
 import {FormControl, FormGroup} from '@angular/forms';
 import {OrderService} from '../shared/services/order.service';
 import {Order} from '../shared/models/order';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -28,7 +29,7 @@ export class CheckoutComponent implements OnInit {
     comment: new FormControl('')
   });
 
-  constructor(private cartService: CartService, private orderService: OrderService) {
+  constructor(private router: Router, private cartService: CartService, private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -57,6 +58,7 @@ export class CheckoutComponent implements OnInit {
     // debugger;
     this.orderService.addOrder(order)
       .subscribe(() => {
+        this.router.navigate(['']);
       });
   }
 }
