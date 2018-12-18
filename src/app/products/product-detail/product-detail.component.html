@@ -1,77 +1,80 @@
-<div>
-  <app-navbar></app-navbar>
-  <div *ngIf="product" class="container mt-4">
-    <div class="row">
-      <!-- Image -->
-      <div class="col-12 col-lg-6">
-        <div class="card bg-light mb-3">
-          <div class="card-body">
-            <a data-target="#productModal" data-toggle="modal" href="">
-              <img alt="" class="img-fluid" src="{{product.image}}"/>
-              <p class="text-center">Zoom</p>
-            </a>
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
+
+    <div class="tr-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-info">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+            <li class="breadcrumb-item active"> Produktinformation</li>
+          </ol>
+          <div class="page-title">
+            <h1>Produktinformation</h1>
           </div>
         </div>
-      </div>
+      </div><!-- /.container -->
+    </div>
 
-      <!-- Add to cart -->
-      <div class="col-12 col-lg-6 add_to_cart_block">
-        <div class="card bg-light mb-3">
-          <div class="card-body">
-            <p class="price mb-1">{{product.price}},- DKK</p>
-            <a class="btn btn-success btn-lg btn-block text-uppercase" href="">
-              <i class="fa fa-shopping-cart"></i> Tilføj til kurv
-            </a>
-            <div class="product_rassurance">
-              <ul class="list-inline">
-                <li class="list-inline-item ml-5 mr-5"><i class="fa fa-truck fa-2x"></i><br/>HURTIG LEVERING</li>
-                <li class="list-inline-item ml-5 mr-5"><i class="fa fa-credit-card fa-2x"></i><br/>SIKKER BETALING</li>
-                <li class="list-inline-item ml-5 mr-5"><i class="fa fa-money-bill fa-2x"></i><br/>FRI FRAGT</li>
+    <div class="main-wrapper product-details">
+      <div *ngIf="product" class="container">
+        <div class="row">
+          <div class="col-md-4 col-lg-2">
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <div class="tr-section product-details">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="tr-product">
+                    <img alt="" class="img-fluid" src="{{product.image}}">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="products-details-info">
+                    <span class="product-title">Kategori</span>
+                    <h1>{{product.title}}</h1>
+                    <div class="quantity-price">
+                      <div class="price">
+                        <span>{{product.price}},- DKK</span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="product-btn">
+                    <div class="add-to-cart">
+                      <a (click)="addToCart(product)" class="btn btn-primary" style="cursor: pointer;">Tilføj til
+                        kurven</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.product-details -->
+
+            <div class="tr-section products-description">
+              <ul class="nav nav-tabs description-tabs" role="tablist">
+                <li class="nav-item" role="presentation"><a aria-controls="details" aria-selected="true"
+                                                            class="nav-link active show" data-toggle="tab"
+                                                            href="#details"
+                                                            role="tab">Beskrivelse</a></li>
               </ul>
-            </div>
+
+              <div class="tab-content">
+                <div class="tab-pane fade active show" id="details" role="tabpanel">
+                  <p>{{product.description}}</p>
+                </div><!-- /.tab-pane -->
+              </div><!-- /.tab-content -->
+            </div><!-- /.products-description -->
           </div>
-        </div>
-      </div>
+        </div><!-- /.row -->
+      </div><!-- /.container -->
     </div>
-
-    <div class="row">
-      <!-- Description -->
-      <div class="col-12">
-        <div class="card border-light mb-3">
-          <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-align-justify"></i> Beskrivelse
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              {{product.description}}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div aria-hidden="true" aria-labelledby="productModalLabel" class="modal fade" id="productModal" role="dialog"
-           tabindex="-1">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="productModalLabel">{{product.title}}</h5>
-              <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <img alt="" class="img-fluid" src="{{product.image}}"/>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" data-dismiss="modal" type="button">Luk</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div *ngIf="!product" style="text-align: center">
+      Produkt information kunne ikke indlæses...
     </div>
-  </div>
-  <div *ngIf="!product">
-    Produkt information kunne ikke indlæses...
-  </div>
-  <app-footer></app-footer>
-</div>
-
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>

@@ -1,36 +1,57 @@
-<div>
-  <app-navbar></app-navbar>
-</div>
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
 
-<div class="container">
-  <div *ngIf="products" class="row">
-    <div *ngFor="let product of products" class="col-md-3 col-sm-6 mt-5">
-      <div class="product-grid3" style="background-color: white">
-        <div class="product-image3">
-          <a routerLink="product-detail/{{product.productId}}">
-            <img class="pic-1" src='{{product.image}}' alt=""/>
-          </a>
-          <ul class="social">
-            <li><a routerLink="product-detail/{{product.productId}}"><i class="fa fa-eye"></i></a></li>
-            <li><a (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i></a></li>
-            <!--- TODO: Maybe show a popup or something that tells the customer that the product was added.. --->
-          </ul>
-          <span *ngIf="product.featured" class="product-new-label">Featured</span>
-        </div>
-        <div class="product-content">
-          <h3 class="title"><a routerLink="product-detail/{{product.productId}}">{{product.title}}</a></h3>
-          <div class="price">
-            {{product.price}},- DKK
-          </div>
-          <h6 class="amountInStock">
-            På lager: {{product.amountInStock}}
-          </h6>
+    <div class="container">
+      <div>
+        <div class="section-title text-center">
+          <h1><span>{{category}}</span></h1>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div>
-  <app-footer></app-footer>
-</div>
+    <div class="container">
+      <div *ngIf="products" class="row">
+        <div *ngFor="let product of products" class="col-sm-6 col-lg-3">
+          <nb-card size="medium">
+            <nb-card-header>
+              <div class="product-img">
+                <a routerLink="product-detail/{{product.productId}}">
+                  <img alt="" class="img-fluid" src="{{product.image}}">
+                </a>
+
+                <a (click)="addToCart(product)" [ngClass]="{added: toggleAdded}" class="add-to-cart"
+                   style="cursor: pointer"><i
+                  #toggleAddedIcon class="fas fa-shopping-basket"></i><span [textContent]="addBtnTxt"></span></a>
+              </div>
+            </nb-card-header>
+            <nb-card-body>
+              <div class="category-title">
+
+                <h5 class="title"><a routerLink="product-detail/{{product.productId}}">{{product.title}}</a></h5>
+                <a class="cat" href="">Category here</a>
+
+              </div>
+            </nb-card-body>
+            <nb-card-footer>
+              <div class="price-stock">
+                <h5 class="price">{{product.price}},- DKK</h5>
+
+                <h6 class="amountInStock">
+                  Lager: {{product.amountInStock}} stk.
+                </h6>
+              </div>
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+    </div>
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>
