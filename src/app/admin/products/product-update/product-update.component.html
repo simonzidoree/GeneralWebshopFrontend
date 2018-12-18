@@ -38,6 +38,24 @@
                  placeholder="Enter the amount of products in stock"
                  type="number">
 
+          <div class="row mt-2">
+            <div class="col-md-5 mb-3">
+              <label for="existingCategory">Existing category</label>
+              <select (change)="toggleNewCategory()" class="custom-select d-block" formControlName="existingCategory"
+                      id="existingCategory" required>
+                <option value='none'></option>
+                <option *ngFor="let category of productCategories">{{category}}</option>
+              </select>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="newCategory">New category</label>
+              <input (input)="toggleExistingCategory()" class="form-control" disabled formControlName="newCategory"
+                     id="newCategory" placeholder=""
+                     required type="text">
+            </div>
+          </div>
+
 
           <label class="mt-3" for="RadioNo">Are the product featured?</label>
           <div>

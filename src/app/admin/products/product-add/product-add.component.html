@@ -39,7 +39,26 @@
                  type="number">
 
 
-          <label class="mt-3" for="RadioNo">Are the product featured?</label>
+          <div class="row mt-2">
+            <div class="col-md-5 mb-3">
+              <label for="existingCategory">Existing category</label>
+              <select (change)="toggleNewCategory()" class="custom-select d-block" formControlName="existingCategory"
+                      id="existingCategory" required>
+                <option value='none'></option>
+                <option *ngFor="let category of productCategories">{{category}}</option>
+              </select>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="newCategory">New category</label>
+              <input (input)="toggleExistingCategory()" class="form-control" formControlName="newCategory"
+                     id="newCategory" placeholder=""
+                     required type="text">
+            </div>
+          </div>
+
+
+          <label class="" for="RadioNo">Are the product featured?</label>
           <div>
             <div class="form-check">
               <input [(ngModel)]="productFeatured" [value]="false" class="form-check-input" formControlName="featured"
