@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from '../shared/services/cart.service';
 import {Product} from '../shared/models/product';
 import {CartProduct} from '../shared/models/cartProduct';
+import {CartUpdaterService} from '../shared/services/cart-updater.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,11 @@ export class CartComponent implements OnInit {
   cartProducts: CartProduct[] = [];
   totalPrice = 0;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private _cartUpdaterService: CartUpdaterService) {
+  }
+
+  cartUpdate(): void {
+    this._cartUpdaterService.filter('UpdateCartCount');
   }
 
   ngOnInit() {
@@ -51,5 +56,6 @@ export class CartComponent implements OnInit {
     for (const productPrice of this.cartProducts) {
       this.totalPrice = this.totalPrice + (productPrice.product.price * productPrice.numberOfProduct);
     }
+    this.cartUpdate();
   }
 }
