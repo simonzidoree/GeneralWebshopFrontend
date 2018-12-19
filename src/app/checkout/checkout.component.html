@@ -28,12 +28,8 @@
           <form (ngSubmit)="save()" [formGroup]="checkoutForm" action="#" class="contact-form" name="contact-form">
             <ul class="tr-list delivery-category">
               <li>
-                <input id="free-delivery" name="sellType" type="radio" value="free-delivery">
+                <input checked="checked" id="free-delivery" name="sellType" type="radio" value="free-delivery">
                 <label for="free-delivery">Gratis Levering</label>
-              </li>
-              <li>
-                <input id="express-delivery" name="sellType" type="radio" value="express-delivery">
-                <label for="express-delivery">Hurtig Levering - 39,- DKK</label>
               </li>
             </ul>
             <div class="row">

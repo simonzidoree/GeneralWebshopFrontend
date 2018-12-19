@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.toggleAdded = !this.toggleAdded;
-    }, 1500);
+    }, 1000);
 
 
     this.cartService.addToCart(product);
@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
           $event.srcElement.parentElement.childNodes.item(1).textContent = this.addToCartTxt;
         }
       },
-      1500);
+      1000);
   }
 
   showToast(status, product) {
