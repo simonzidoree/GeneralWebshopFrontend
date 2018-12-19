@@ -54,6 +54,19 @@ export class CheckoutComponent implements OnInit {
 
   save() {
     const order: Order = this.checkoutForm.value;
+    order.orderLines = [];
+
+    this.cartProducts.forEach(product => {
+      const prod = product as CartProduct;
+      order.orderLines.push({
+        // orderId: order.orderId,
+        productId: prod.product.productId,
+        qty: prod.numberOfProduct,
+        priceWhenBought: +prod.product.price * prod.numberOfProduct
+      });
+    });
+
+
     this.orderService.addOrder(order)
       .subscribe(() => {
         this.router.navigate(['']);

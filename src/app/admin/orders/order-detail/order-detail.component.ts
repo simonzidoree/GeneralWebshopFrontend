@@ -29,7 +29,7 @@ export class OrderDetailComponent implements OnInit {
   shipped() {
     const order = this.order;
     order.isDelivered = true;
-    order.products = null;
+    // order.orderLines = null;
     this.orderService.updateOrder(order)
       .subscribe(() => {
         this.router.navigateByUrl('/admin/orders');

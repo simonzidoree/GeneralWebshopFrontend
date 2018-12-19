@@ -553,6 +553,14 @@
     margin-bottom: 0;
   }
 
+  .pull-right {
+    float: right;
+  }
+
+  .pull-left {
+    float: left;
+  }
+
   .topbar-middle .search-form button {
     position: absolute;
     right: 0;
@@ -1687,7 +1695,7 @@
     overflow: hidden;
   }
 
-  .products-description .expire-date input:last-op-type {
+  .products-description .expire-date input {
     margin-right: 0;
   }
 
