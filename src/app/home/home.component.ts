@@ -1,15 +1,33 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output} from '@angular/core';
 import {Product} from '../shared/models/product';
 import {ProductService} from '../shared/services/product.service';
 import {CartService} from '../shared/services/cart.service';
 import {CartUpdaterService} from '../shared/services/cart-updater.service';
 import {NbToastrService} from '@nebular/theme';
 import {NbToastStatus} from '@nebular/theme/components/toastr/model';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        backgroundColor: 'blue'
+      })),
+      state('closed', style({
+        backgroundColor: 'green',
+      })),
+      transition('open => closed', [
+        animate('5s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+    ]),
+  ],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
 
@@ -17,12 +35,8 @@ export class HomeComponent implements OnInit {
 
   products: Product[];
 
-  @ViewChild('toggleAddedIcon') tai;
-  @ViewChild('addedText') aTxt;
-
   private addToCartTxt = 'LÆG I KURV';
   private addedToCartTxt = 'LAGT I KURV';
-  private addBtnTxt = this.addToCartTxt;
 
   private toggleAdded = false;
 
@@ -45,32 +59,52 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  addToCart(product: Product) {
-    if (this.addBtnTxt === this.addToCartTxt) {
-      this.addBtnTxt = this.addedToCartTxt;
-    } else {
-      this.addBtnTxt = this.addToCartTxt;
-    }
-
-    this.toggleIcon();
-
-    if (!this.toggleAdded) {
-      this.cartService.addToCart(product);
-    }
-
+  addToCart(product: Product, $event) {
     this.toggleAdded = !this.toggleAdded;
+    this.toggleIcon($event);
+
+    setTimeout(() => {
+      this.toggleAdded = !this.toggleAdded;
+    }, 1500);
+
+
+    this.cartService.addToCart(product);
+
+
     this.showToast(NbToastStatus.SUCCESS, product);
     this.cartUpdate();
   }
 
-  toggleIcon() {
+  toggleIcon($event) {
     if (this.toggleAdded) {
-      this.tai.nativeElement.classList.add('fa-shopping-basket');
-      this.tai.nativeElement.classList.remove('fa-check');
-    } else {
-      this.tai.nativeElement.classList.add('fa-check');
-      this.tai.nativeElement.classList.remove('fa-shopping-basket');
+      if ($event.srcElement.classList.contains('add-to-cart')) {
+        $event.srcElement.childNodes.item(0).classList.add('fa-check');
+        $event.srcElement.childNodes.item(0).classList.remove('fa-shopping-basket');
+
+        $event.srcElement.childNodes.item(1).textContent = this.addedToCartTxt;
+      } else {
+        $event.srcElement.parentElement.childNodes.item(0).classList.add('fa-check');
+        $event.srcElement.parentElement.childNodes.item(0).classList.remove('fa-shopping-basket');
+
+        $event.srcElement.parentElement.childNodes.item(1).textContent = this.addedToCartTxt;
+      }
+
     }
+
+    setTimeout(() => {
+        if ($event.srcElement.classList.contains('add-to-cart')) {
+          $event.srcElement.childNodes.item(0).classList.add('fa-shopping-basket');
+          $event.srcElement.childNodes.item(0).classList.remove('fa-check');
+
+          $event.srcElement.childNodes.item(1).textContent = this.addToCartTxt;
+        } else {
+          $event.srcElement.parentElement.childNodes.item(0).classList.add('fa-shopping-basket');
+          $event.srcElement.parentElement.childNodes.item(0).classList.remove('fa-check');
+
+          $event.srcElement.parentElement.childNodes.item(1).textContent = this.addToCartTxt;
+        }
+      },
+      1500);
   }
 
   showToast(status, product) {

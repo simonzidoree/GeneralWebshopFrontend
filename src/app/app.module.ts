@@ -82,7 +82,7 @@ import {ProductsComponent} from './products/products/products.component';
     NbProgressBarModule,
     NbActionsModule,
     NbSelectModule,
-    NbToastrModule.forRoot({destroyByClick: true, preventDuplicates: true}),
+    NbToastrModule.forRoot({destroyByClick: true}),
   ],
   providers: [
     AuthGuard,

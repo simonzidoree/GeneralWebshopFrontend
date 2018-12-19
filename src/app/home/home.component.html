@@ -22,8 +22,8 @@
                   <img alt="" class="img-fluid" src="{{product.image}}">
                 </a>
 
-                <a (click)="addToCart(product)" [ngClass]="{added: toggleAdded}" class="add-to-cart" href="#"><i
-                  #toggleAddedIcon class="fas fa-shopping-basket"></i><span [textContent]="addBtnTxt"></span></a>
+                <a (click)="addToCart(product, $event)" [ngClass]="{added: toggleAdded}" class="add-to-cart" href="#">
+                  <i class="fas fa-shopping-basket"></i><span>LÆG I KURV</span></a>
               </div>
             </nb-card-header>
             <nb-card-body>
