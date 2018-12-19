@@ -39,6 +39,8 @@
               <p>{{order.orderDate}}</p>
               <h3>Is order delivered: </h3>
               <p>{{order.isDelivered}}</p>
+
+              <p>{{order.orderLines}}</p>
             </div>
             <div *ngIf="!order">
               <h2>Order not found...</h2>

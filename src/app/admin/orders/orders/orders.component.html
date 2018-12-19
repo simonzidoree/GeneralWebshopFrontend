@@ -100,9 +100,9 @@
               </progressbar>
             </div>
             <div *ngIf="orders" class="row mt-4">
-              <div class="col-xxxl-3 col-md-6">
-                <ng-container *ngFor="let order of orders">
-                  <ng-container *ngIf="order.isDelivered == true">
+              <ng-container *ngFor="let order of orders">
+                <ng-container *ngIf="order.isDelivered == true">
+                  <div class="col-xxxl-3 col-md-6">
                     <nb-card>
                       <nb-card-header>
                         <div>
@@ -126,9 +126,9 @@
                         </div>
                       </nb-card-footer>
                     </nb-card>
-                  </ng-container>
+                  </div>
                 </ng-container>
-              </div>
+              </ng-container>
             </div>
           </div>
         </nb-tab>
