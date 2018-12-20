@@ -25,7 +25,8 @@
             <span>Levering</span>
           </div>
 
-          <form (ngSubmit)="save()" [formGroup]="checkoutForm" action="#" class="contact-form" name="contact-form">
+          <form (ngSubmit)="save()" [formGroup]="checkoutForm" action="#" class="contact-form" name="contact-form"
+                novalidate>
             <ul class="tr-list delivery-category">
               <li>
                 <input checked="checked" id="free-delivery" name="sellType" type="radio" value="free-delivery">

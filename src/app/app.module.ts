@@ -40,6 +40,8 @@ import {CartComponent} from './cart/cart.component';
 import {HeaderComponent} from './shared/header/header.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {ProductsComponent} from './products/products/products.component';
+import {PaymentComponent} from './payment/payment.component';
+import {SuccessComponent} from './success/success.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import {ProductsComponent} from './products/products/products.component';
     HeaderComponent,
     CartComponent,
     CheckoutComponent,
-    ProductsComponent
+    ProductsComponent,
+    PaymentComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

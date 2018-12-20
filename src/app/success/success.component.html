@@ -1,0 +1,42 @@
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
+
+    <div class="tr-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-info">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+            <li class="breadcrumb-item active"> Bestillingsbekræftelse</li>
+          </ol>
+          <div class="page-title">
+            <h1>Bestillingsbekræftelse</h1>
+          </div>
+        </div>
+      </div><!-- /.container -->
+    </div>
+
+    <div class="main-wrapper">
+      <div class="container">
+        <div class="tr-section tr-congrats text-center">
+          <div class="congrats-content">
+            <div class="icon">
+              <i aria-hidden="true" class="fa fa-check-circle green-fade"></i>
+            </div>
+            <h1>Tak for din ordre! Din bestilling er nu blevet registreret.</h1>
+            <p>Alle nødvendige oplysninger om <br> leveringen, vil blive sendt til din email.</p>
+            <div class="buttons">
+              <a class="btn btn-primary button-back" routerLink="">Tilbage til forsiden</a>
+            </div>
+          </div><!-- /.congrats-content -->
+        </div><!-- /.tr-section -->
+      </div><!-- /.container -->
+    </div>
+
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>

@@ -59,7 +59,6 @@ export class CheckoutComponent implements OnInit {
     this.cartProducts.forEach(product => {
       const prod = product as CartProduct;
       order.orderLines.push({
-        // orderId: order.orderId,
         productId: prod.product.productId,
         qty: prod.numberOfProduct,
         priceWhenBought: +prod.product.price * prod.numberOfProduct
@@ -69,7 +68,7 @@ export class CheckoutComponent implements OnInit {
 
     this.orderService.addOrder(order)
       .subscribe(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['/payment']);
       });
   }
 }
