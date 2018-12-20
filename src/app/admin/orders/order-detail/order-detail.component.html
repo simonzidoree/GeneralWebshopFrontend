@@ -2,7 +2,7 @@
   <nb-layout-header fixed>
     <nb-actions size="small">
       <nb-action icon="fa fa-arrow-left" routerLink="/admin/orders"></nb-action>
-      <nb-action>General Webshop</nb-action>
+      <nb-action>Admin panel</nb-action>
     </nb-actions>
   </nb-layout-header>
 
@@ -15,29 +15,29 @@
           </div>
           <div class="card-body">
             <div *ngIf="order">
-              <h2>Order Number: </h2>
+              <h2>Ordrenummer: </h2>
               <p>{{order.orderNumber}}</p>
-              <h3>ID: </h3>
+              <h3>Ordre id: </h3>
               <p>{{order.orderId}}</p>
-              <h3>Full name: </h3>
+              <h3>Navn: </h3>
               <p>{{order.fullName}}</p>
-              <h3>Address: </h3>
+              <h3>Adresse: </h3>
               <p>{{order.address}}</p>
-              <h3>Zipcode: </h3>
+              <h3>Postnr.: </h3>
               <p>{{order.zipcode}}</p>
-              <h3>City: </h3>
+              <h3>By: </h3>
               <p>{{order.city}}</p>
-              <h3>Country: </h3>
+              <h3>Land: </h3>
               <p>{{order.country}}</p>
-              <h3>Phone Number: </h3>
+              <h3>Telefonnummer: </h3>
               <p>{{order.phoneNumber}}</p>
               <h3>Email: </h3>
               <p>{{order.email}}</p>
-              <h3>Comment: </h3>
+              <h3>Kommentar: </h3>
               <p>{{order.comment}}</p>
-              <h3>Order date: </h3>
+              <h3>Ordre dato: </h3>
               <p>{{order.orderDate}}</p>
-              <h3>Is order delivered: </h3>
+              <h3>Er ordre leveret: </h3>
               <p>{{order.isDelivered}}</p>
 
               <div class="container">
@@ -79,18 +79,18 @@
               </div>
             </div>
             <div *ngIf="!order">
-              <h2>Order not found...</h2>
+              <h2>Order blev ikke fundet...</h2>
             </div>
           </div>
         </div>
         <ng-template #confirmPop>
           <div class="row justify-content-center">
-            <button (click)="shipped()" class="btn btn-success">Yes</button>
+            <button (click)="shipped()" class="btn btn-success">Bekræft</button>
           </div>
         </ng-template>
         <button [disabled]="disabled" [outsideClick]="true" [popover]="confirmPop"
                 class="btn btn-success mt-3 mb-5"
-                popoverTitle="Confirm packed & shipped order? If not, click outside this box.">Packed and shipped
+                popoverTitle="Bekræft pakket & afsendt ordre? Hvis ikke, klik uden for denne boks.">Pakket og afsendt
         </button>
       </div>
     </div>

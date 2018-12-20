@@ -3,24 +3,24 @@
     <div class="main-div">
       <div class="panel">
         <h2>Admin Login</h2>
-        <p>Please enter your username and password</p>
+        <p>Indtast venligst dit brugernavn og din adgangskode</p>
       </div>
       <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" id="Login">
 
         <div class="form-group">
-          <input class="form-control" formControlName="username" id="inputEmail" placeholder="Username" required
+          <input class="form-control" formControlName="username" id="inputEmail" placeholder="Brugernavn" required
                  type="text">
           <div *ngIf="username.invalid && submitted" class="alert-danger">
-            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.required">Brugernavn er påkrævet!</div>
           </div>
         </div>
 
         <div class="form-group">
 
-          <input class="form-control" formControlName="password" id="inputPassword" placeholder="Password" required
+          <input class="form-control" formControlName="password" id="inputPassword" placeholder="Adgangskode" required
                  type="password">
           <div *ngIf="password.invalid && submitted" class="alert-danger">
-            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.required">Adgangskode er påkrævet.</div>
           </div>
         </div>
         <div class="form-group">

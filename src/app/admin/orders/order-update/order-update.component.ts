@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {OrderService} from '../../../shared/services/order.service';
+import {OrderLine} from '../../../shared/models/OrderLine';
+import {Order} from '../../../shared/models/order';
 
 @Component({
   selector: 'app-order-update',
@@ -11,9 +13,12 @@ import {OrderService} from '../../../shared/services/order.service';
 export class OrderUpdateComponent implements OnInit {
 
   orderId: number;
+  orderNumber: number;
+  orderComment: string;
+  orderDate: string;
+  orderLinesFromRest: OrderLine[] = [];
 
   orderForm = new FormGroup({
-    orderNumber: new FormControl(''),
     fullName: new FormControl(''),
     address: new FormControl(''),
     zipcode: new FormControl(''),
@@ -21,8 +26,6 @@ export class OrderUpdateComponent implements OnInit {
     country: new FormControl(''),
     phoneNumber: new FormControl(''),
     email: new FormControl(''),
-    comment: new FormControl(''),
-    orderDate: new FormControl(''),
     isDelivered: new FormControl('')
   });
   orderDelivered: any;
@@ -38,24 +41,40 @@ export class OrderUpdateComponent implements OnInit {
     this.orderService.getOrderById(this.orderId)
       .subscribe(orderFromRest => {
         this.orderForm.patchValue({
-          orderNumber: orderFromRest.orderNumber,
           fullName: orderFromRest.fullName,
           address: orderFromRest.address,
           zipcode: orderFromRest.zipcode,
           city: orderFromRest.city,
           country: orderFromRest.country,
           phoneNumber: orderFromRest.phoneNumber,
-          email: orderFromRest.email,
-          comment: orderFromRest.comment,
-          orderDate: orderFromRest.orderDate
+          email: orderFromRest.email
         });
+        this.orderNumber = orderFromRest.orderNumber;
         this.orderDelivered = orderFromRest.isDelivered;
+        this.orderComment = orderFromRest.comment;
+        this.orderDate = orderFromRest.orderDate;
+        this.orderLinesFromRest = orderFromRest.orderLines;
       });
   }
 
   save() {
-    const order = this.orderForm.value;
+    const order: Order = this.orderForm.value;
     order.orderId = this.orderId;
+    order.orderNumber = this.orderNumber;
+    order.comment = this.orderComment;
+    order.orderDate = this.orderDate;
+
+    order.orderLines = [];
+
+    this.orderLinesFromRest.forEach(product => {
+      const prod = product as OrderLine;
+      order.orderLines.push({
+        productId: prod.productId,
+        qty: prod.qty,
+        priceWhenBought: prod.priceWhenBought
+      });
+    });
+
     this.orderService.updateOrder(order)
       .subscribe(() => {
         this.router.navigateByUrl('/admin/orders');

@@ -2,7 +2,7 @@
   <nb-layout-header fixed>
     <nb-actions size="small">
       <nb-action icon="fa fa-arrow-left" routerLink="/admin/orders"></nb-action>
-      <nb-action>General Webshop</nb-action>
+      <nb-action>Admin panel</nb-action>
     </nb-actions>
   </nb-layout-header>
 
@@ -11,71 +11,56 @@
       <div class="justify-content-center mt-5">
         <form (ngSubmit)="save()" [formGroup]="orderForm">
 
-          <label for="orderNumberForm">Order number:</label>
-          <input class="form-control" formControlName="orderNumber" id="orderNumberForm"
-                 placeholder="Enter order number"
-                 type="number">
-
-          <label class="mt-2" for="fullNameForm">Full name:</label>
+          <label class="mt-2" for="fullNameForm">Navn:</label>
           <input class="form-control" formControlName="fullName" id="fullNameForm"
-                 placeholder="Enter full name of orders customer"
+                 placeholder="Indtast fulde navn på ordre kunde"
                  type="text">
 
-          <label class="mt-2" for="addressForm">Address:</label>
+          <label class="mt-2" for="addressForm">Adresse:</label>
           <input class="form-control" formControlName="address" id="addressForm"
-                 placeholder="Enter the address of orders customer"
+                 placeholder="Indtast adresse på ordre kunde"
                  type="text">
 
-          <label class="mt-2" for="zipcodeForm">Zip code:</label>
+          <label class="mt-2" for="zipcodeForm">Postnr.:</label>
           <input class="form-control" formControlName="zipcode" id="zipcodeForm"
-                 placeholder="Enter the zip code of orders customer"
-                 type="number">
+                 max="9999"
+                 maxlength="4" min="1000" placeholder="Indtast postnummer på ordre kunde" type="number">
 
-          <label class="mt-2" for="cityForm">City:</label>
+          <label class="mt-2" for="cityForm">By:</label>
           <input class="form-control" formControlName="city" id="cityForm"
-                 placeholder="Enter the city of orders customer"
+                 placeholder="Indtast ordre kundens by"
                  type="text">
 
-          <label class="mt-2" for="countryForm">Country:</label>
+          <label class="mt-2" for="countryForm">Land:</label>
           <input class="form-control" formControlName="country" id="countryForm"
-                 placeholder="Enter the country of orders customer"
+                 placeholder="Indtast ordre kundens land"
                  type="text">
 
-          <label class="mt-2" for="phoneNumberForm">Phone number:</label>
+          <label class="mt-2" for="phoneNumberForm">Telefonnummer:</label>
           <input class="form-control" formControlName="phoneNumber" id="phoneNumberForm"
-                 placeholder="Enter the phone number of orders customer"
-                 type="tel">
+                 max="99999999"
+                 maxlength="8" min="00000000" placeholder="Indtast telefonnummer på ordre kunde" type="number">
 
           <label class="mt-2" for="emailForm">Email:</label>
           <input class="form-control" formControlName="email" id="emailForm"
-                 placeholder="Enter the email of orders customer"
+                 placeholder="Indtast ordre kundens e-mail"
                  type="email">
 
-          <label class="mt-2" for="commentForm">Comment:</label>
-          <input class="form-control" formControlName="comment" id="commentForm"
-                 placeholder="Enter the comment for the order of the customer"
-                 type="text">
-
-          <label class="mt-2" for="orderDateForm">Order date:</label>
-          <input class="form-control" formControlName="orderDate" id="orderDateForm"
-                 placeholder="Enter the order date of orders customer"
-                 type="text">
-
-          <label class="mt-3" for="RadioNo">Are the order delivered?</label>
+          <label class="mt-3" for="RadioNo">Er ordren leveret?</label>
           <div>
             <div class="form-check">
               <input [(ngModel)]="orderDelivered" [value]="false" class="form-check-input" formControlName="isDelivered"
                      id="RadioNo" type="radio">
-              <label class="form-check-label" for="RadioNo">No</label>
+              <label class="form-check-label" for="RadioNo">Nej</label>
             </div>
             <div class="form-check">
               <input [(ngModel)]="orderDelivered" [value]="true" class="form-check-input" formControlName="isDelivered"
                      id="RadioYes" type="radio">
-              <label class="form-check-label" for="RadioYes">Yes</label>
+              <label class="form-check-label" for="RadioYes">Ja</label>
             </div>
           </div>
 
-          <button class="btn btn-primary btn-block mb-3 mt-3" type="submit">Edit order</button>
+          <button class="btn btn-primary btn-block mb-3 mt-3" type="submit">Rediger ordre</button>
         </form>
       </div>
     </div>

@@ -23,6 +23,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbLayoutModule,
+  NbPopoverModule,
   NbProgressBarModule,
   NbSearchModule,
   NbSearchService,
@@ -86,6 +87,7 @@ import {SuccessComponent} from './success/success.component';
     NbProgressBarModule,
     NbActionsModule,
     NbSelectModule,
+    NbPopoverModule,
     NbToastrModule.forRoot({destroyByClick: true}),
   ],
   providers: [

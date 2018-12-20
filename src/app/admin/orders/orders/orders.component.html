@@ -10,12 +10,12 @@
   <nb-layout-column>
     <div class="container-fluid">
       <nb-tabset fullWidth>
-        <nb-tab tabTitle="All orders">
+        <nb-tab tabTitle="Alle ordrer">
           <div class="container-fluid">
             <div *ngIf="!orders" class="row">
               <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">
-                Loading
-                orders...
+                Indlæser
+                produkter...
               </progressbar>
             </div>
 
@@ -36,11 +36,20 @@
                     </nb-card-body>
                     <nb-card-footer>
                       <div class="btn-group d-flex">
-                        <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.orderId}}">Details
+                        <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.orderId}}">Detaljer
                         </button>
-                        <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.orderId}}">Edit
+                        <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.orderId}}">Rediger
                         </button>
-                        <button (click)="delete(order.orderId)" class="btn btn-danger w-100">Delete</button>
+                        <ng-template #confirmPop>
+                          <div class="row justify-content-center">
+                            <button (click)="delete(order.orderId)" class="btn btn-success">Ja</button>
+                          </div>
+                        </ng-template>
+                        <button [outsideClick]="true" [popover]="confirmPop"
+                                class="btn btn-danger w-100"
+                                popoverTitle="Er du sikker på du vil slette dette produkt? Hvis ikke, klik uden for denne boks.">
+                          Slet
+                        </button>
                       </div>
                     </nb-card-footer>
                   </nb-card>
@@ -50,12 +59,12 @@
           </div>
         </nb-tab>
 
-        <nb-tab tabTitle="Not shipped">
+        <nb-tab tabTitle="Ikke afsendt ordrer">
           <div class="container-fluid">
             <div *ngIf="!orders" class="row">
               <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">
-                Loading
-                orders...
+                Indlæser
+                produkter...
               </progressbar>
             </div>
             <div *ngIf="orders" class="row mt-4">
@@ -76,11 +85,21 @@
                       </nb-card-body>
                       <nb-card-footer>
                         <div class="btn-group d-flex">
-                          <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.orderId}}">Details
+                          <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.orderId}}">
+                            Detaljer
                           </button>
-                          <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.orderId}}">Edit
+                          <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.orderId}}">Rediger
                           </button>
-                          <button (click)="delete(order.orderId)" class="btn btn-danger w-100">Delete</button>
+                          <ng-template #confirmPop>
+                            <div class="row justify-content-center">
+                              <button (click)="delete(order.orderId)" class="btn btn-success">Ja</button>
+                            </div>
+                          </ng-template>
+                          <button [outsideClick]="true" [popover]="confirmPop"
+                                  class="btn btn-danger w-100"
+                                  popoverTitle="Er du sikker på du vil slette dette produkt? Hvis ikke, klik uden for denne boks.">
+                            Slet
+                          </button>
                         </div>
                       </nb-card-footer>
                     </nb-card>
@@ -91,12 +110,12 @@
           </div>
         </nb-tab>
 
-        <nb-tab tabTitle="Shipped">
+        <nb-tab tabTitle="Afsendt ordrer">
           <div class="container-fluid">
             <div *ngIf="!orders" class="row">
               <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">
-                Loading
-                orders...
+                Indlæser
+                produkter...
               </progressbar>
             </div>
             <div *ngIf="orders" class="row mt-4">
@@ -106,7 +125,7 @@
                     <nb-card>
                       <nb-card-header>
                         <div>
-                          <span class="float-left">Ordernr.: {{order.orderNumber}}</span>
+                          <span class="float-left">Ordrenr.: {{order.orderNumber}}</span>
                           <span class="float-right">ID: {{order.orderId}}</span>
                         </div>
                       </nb-card-header>
@@ -118,11 +137,21 @@
                       <nb-card-footer>
 
                         <div class="btn-group d-flex">
-                          <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.orderId}}">Details
+                          <button class="btn btn-primary mr-3 w-100" routerLink="/admin/order/{{order.orderId}}">
+                            Detaljer
                           </button>
-                          <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.orderId}}">Edit
+                          <button class="btn btn-info w-100" routerLink="/admin/order-update/{{order.orderId}}">Rediger
                           </button>
-                          <button (click)="delete(order.orderId)" class="btn btn-danger w-100">Delete</button>
+                          <ng-template #confirmPop>
+                            <div class="row justify-content-center">
+                              <button (click)="delete(order.orderId)" class="btn btn-success">Ja</button>
+                            </div>
+                          </ng-template>
+                          <button [outsideClick]="true" [popover]="confirmPop"
+                                  class="btn btn-danger w-100"
+                                  popoverTitle="Er du sikker på du vil slette dette produkt? Hvis ikke, klik uden for denne boks.">
+                            Slet
+                          </button>
                         </div>
                       </nb-card-footer>
                     </nb-card>
