@@ -40,7 +40,43 @@
               <h3>Is order delivered: </h3>
               <p>{{order.isDelivered}}</p>
 
-              <p>{{order.orderLines}}</p>
+              <div class="container">
+                <div>
+                  <div class="section-title text-center">
+                    <h1><span>Produkter</span></h1>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <div *ngIf="products" class="row">
+                  <div *ngFor="let product of products" class="col-sm-6 col-lg-3">
+                    <nb-card size="medium">
+                      <nb-card-header>
+                        <div class="product-img">
+                          <a>
+                            <img alt="" class="img-fluid" src="{{product.product.image}}">
+                          </a>
+                        </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <div class="category-title">
+                          <h5 class="title"><a>{{product.product.title}}</a></h5>
+                        </div>
+                      </nb-card-body>
+                      <nb-card-footer>
+                        <div class="price-stock">
+                          <h5 class="price">{{product.product.price}},- DKK</h5>
+
+                          <h6 class="amountInStock">
+                            Bestilt antal: {{product.qty}}
+                          </h6>
+                        </div>
+                      </nb-card-footer>
+                    </nb-card>
+                  </div>
+                </div>
+              </div>
             </div>
             <div *ngIf="!order">
               <h2>Order not found...</h2>

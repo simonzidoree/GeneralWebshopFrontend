@@ -18,20 +18,20 @@
           <nb-card size="medium">
             <nb-card-header>
               <div class="product-img">
-                <a routerLink="product-detail/{{product.productId}}">
+                <a routerLink="../../product-detail/{{product.productId}}">
                   <img alt="" class="img-fluid" src="{{product.image}}">
                 </a>
 
-                <a (click)="addToCart(product)" [ngClass]="{added: toggleAdded}" class="add-to-cart"
-                   style="cursor: pointer"><i
-                  #toggleAddedIcon class="fas fa-shopping-basket"></i><span [textContent]="addBtnTxt"></span></a>
+                <a (click)="addToCart(product, $event)" [ngClass]="{added: toggleAdded}" class="add-to-cart"
+                   style="cursor: pointer">
+                  <i class="fas fa-shopping-basket"></i><span>LÆG I KURV</span></a>
               </div>
             </nb-card-header>
             <nb-card-body>
               <div class="category-title">
 
-                <h5 class="title"><a routerLink="product-detail/{{product.productId}}">{{product.title}}</a></h5>
-                <a class="cat" href="">Category here</a>
+                <h5 class="title"><a routerLink="../../product-detail/{{product.productId}}">{{product.title}}</a></h5>
+                <a class="cat">{{category}}</a>
 
               </div>
             </nb-card-body>

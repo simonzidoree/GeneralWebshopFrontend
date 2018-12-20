@@ -5,27 +5,9 @@ import {CartService} from '../shared/services/cart.service';
 import {CartUpdaterService} from '../shared/services/cart-updater.service';
 import {NbToastrService} from '@nebular/theme';
 import {NbToastStatus} from '@nebular/theme/components/toastr/model';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
-  animations: [
-    trigger('openClose', [
-      // ...
-      state('open', style({
-        backgroundColor: 'blue'
-      })),
-      state('closed', style({
-        backgroundColor: 'green',
-      })),
-      transition('open => closed', [
-        animate('5s')
-      ]),
-      transition('closed => open', [
-        animate('0.5s')
-      ]),
-    ]),
-  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })

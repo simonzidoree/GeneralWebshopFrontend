@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../../shared/services/product.service';
 import {Product} from '../../shared/models/product';
@@ -19,12 +19,8 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   category: string;
 
-  @ViewChild('toggleAddedIcon') tai;
-  @ViewChild('addedText') aTxt;
-
   private addToCartTxt = 'LÆG I KURV';
   private addedToCartTxt = 'LAGT I KURV';
-  private addBtnTxt = this.addToCartTxt;
 
   private toggleAdded = false;
 
@@ -56,32 +52,52 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  addToCart(product: Product) {
-    if (this.addBtnTxt === this.addToCartTxt) {
-      this.addBtnTxt = this.addedToCartTxt;
-    } else {
-      this.addBtnTxt = this.addToCartTxt;
-    }
-
-    this.toggleIcon();
-
-    if (!this.toggleAdded) {
-      this.cartService.addToCart(product);
-    }
-
+  addToCart(product: Product, $event) {
     this.toggleAdded = !this.toggleAdded;
+    this.toggleIcon($event);
+
+    setTimeout(() => {
+      this.toggleAdded = !this.toggleAdded;
+    }, 1000);
+
+
+    this.cartService.addToCart(product);
+
+
     this.showToast(NbToastStatus.SUCCESS, product);
     this.cartUpdate();
   }
 
-  toggleIcon() {
+  toggleIcon($event) {
     if (this.toggleAdded) {
-      this.tai.nativeElement.classList.add('fa-shopping-basket');
-      this.tai.nativeElement.classList.remove('fa-check');
-    } else {
-      this.tai.nativeElement.classList.add('fa-check');
-      this.tai.nativeElement.classList.remove('fa-shopping-basket');
+      if ($event.srcElement.classList.contains('add-to-cart')) {
+        $event.srcElement.childNodes.item(0).classList.add('fa-check');
+        $event.srcElement.childNodes.item(0).classList.remove('fa-shopping-basket');
+
+        $event.srcElement.childNodes.item(1).textContent = this.addedToCartTxt;
+      } else {
+        $event.srcElement.parentElement.childNodes.item(0).classList.add('fa-check');
+        $event.srcElement.parentElement.childNodes.item(0).classList.remove('fa-shopping-basket');
+
+        $event.srcElement.parentElement.childNodes.item(1).textContent = this.addedToCartTxt;
+      }
+
     }
+
+    setTimeout(() => {
+        if ($event.srcElement.classList.contains('add-to-cart')) {
+          $event.srcElement.childNodes.item(0).classList.add('fa-shopping-basket');
+          $event.srcElement.childNodes.item(0).classList.remove('fa-check');
+
+          $event.srcElement.childNodes.item(1).textContent = this.addToCartTxt;
+        } else {
+          $event.srcElement.parentElement.childNodes.item(0).classList.add('fa-shopping-basket');
+          $event.srcElement.parentElement.childNodes.item(0).classList.remove('fa-check');
+
+          $event.srcElement.parentElement.childNodes.item(1).textContent = this.addToCartTxt;
+        }
+      },
+      1000);
   }
 
   showToast(status, product) {

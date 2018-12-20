@@ -22,7 +22,8 @@
                   <img alt="" class="img-fluid" src="{{product.image}}">
                 </a>
 
-                <a (click)="addToCart(product, $event)" [ngClass]="{added: toggleAdded}" class="add-to-cart" href="#">
+                <a (click)="addToCart(product, $event)" [ngClass]="{added: toggleAdded}" class="add-to-cart"
+                   style="cursor: pointer">
                   <i class="fas fa-shopping-basket"></i><span>LÆG I KURV</span></a>
               </div>
             </nb-card-header>
@@ -30,7 +31,7 @@
               <div class="category-title">
 
                 <h5 class="title"><a routerLink="product-detail/{{product.productId}}">{{product.title}}</a></h5>
-                <a class="cat" href="">Category here</a>
+                <a class="cat" routerLink="/products/{{product.category}}">{{product.category}}</a>
 
               </div>
             </nb-card-body>
