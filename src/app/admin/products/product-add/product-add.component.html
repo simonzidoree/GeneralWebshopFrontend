@@ -1,55 +1,80 @@
-<div class="container col-6">
-  <div class="row">
-    <button class="btn btn-secondary mt-3" routerLink="/admin">Back</button>
-  </div>
+<nb-layout windowMode>
+
+  <nb-layout-header fixed>
+    <nb-actions size="small">
+      <nb-action icon="fa fa-arrow-left" routerLink="/admin"></nb-action>
+      <nb-action>General Webshop</nb-action>
+    </nb-actions>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <div class="container col-6">
+      <div class="justify-content-center mt-5">
+        <form (ngSubmit)="save()" [formGroup]="productForm">
+
+          <label for="titleForm">Title:</label>
+          <input class="form-control" formControlName="title" id="titleForm" placeholder="Enter product title"
+                 type="text">
 
 
-  <div class="justify-content-center mt-5">
-    <form (ngSubmit)="save()" [formGroup]="productForm">
-
-      <label for="titleForm">Title:</label>
-      <input class="form-control" formControlName="title" id="titleForm" placeholder="Enter product title"
-             type="text">
+          <label class="mt-2" for="descriptionForm">Description:</label>
+          <input class="form-control" formControlName="description" id="descriptionForm"
+                 placeholder="Enter product description"
+                 type="text">
 
 
-      <label class="mt-2" for="descriptionForm">Description:</label>
-      <input class="form-control" formControlName="description" id="descriptionForm"
-             placeholder="Enter product description"
-             type="text">
+          <label class="mt-2" for="priceForm">Price:</label>
+          <input class="form-control" formControlName="price" id="priceForm" placeholder="Enter product price"
+                 type="number">
 
 
-      <label class="mt-2" for="priceForm">Price:</label>
-      <input class="form-control" formControlName="price" id="priceForm" placeholder="Enter product price"
-             type="number">
+          <label class="mt-2" for="imageForm">Image:</label>
+          <input class="form-control" formControlName="image" id="imageForm" placeholder="Enter product image"
+                 type="url">
 
 
-      <label class="mt-2" for="imageForm">Image:</label>
-      <input class="form-control" formControlName="image" id="imageForm" placeholder="Enter product image"
-             type="url">
+          <label class="mt-2" for="amountInStockForm">Amount in stock:</label>
+          <input class="form-control" formControlName="amountInStock" id="amountInStockForm"
+                 placeholder="Enter the amount of products in stock"
+                 type="number">
 
 
-      <label class="mt-2" for="amountInStockForm">Amount in stock:</label>
-      <input class="form-control" formControlName="amountInStock" id="amountInStockForm"
-             placeholder="Enter the amount of products in stock"
-             type="number">
+          <div class="row mt-2">
+            <div class="col-md-5 mb-3">
+              <label for="existingCategory">Existing category</label>
+              <select (change)="toggleNewCategory()" class="custom-select d-block" formControlName="existingCategory"
+                      id="existingCategory" required>
+                <option value='none'></option>
+                <option *ngFor="let category of productCategories">{{category}}</option>
+              </select>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="newCategory">New category</label>
+              <input (input)="toggleExistingCategory()" class="form-control" formControlName="newCategory"
+                     id="newCategory" placeholder=""
+                     required type="text">
+            </div>
+          </div>
 
 
-      <label class="mt-3" for="RadioNo">Are the product featured?</label>
-      <div>
-        <div class="form-check">
-          <input [(ngModel)]="productFeatured" [value]="false" class="form-check-input" formControlName="featured"
-                 id="RadioNo" type="radio">
-          <label class="form-check-label" for="RadioNo">No</label>
-        </div>
-        <div class="form-check">
-          <input [(ngModel)]="productFeatured" [value]="true" class="form-check-input" formControlName="featured"
-                 id="RadioYes" type="radio">
-          <label class="form-check-label" for="RadioYes">Yes</label>
-        </div>
+          <label class="" for="RadioNo">Are the product featured?</label>
+          <div>
+            <div class="form-check">
+              <input [(ngModel)]="productFeatured" [value]="false" class="form-check-input" formControlName="featured"
+                     id="RadioNo" type="radio">
+              <label class="form-check-label" for="RadioNo">No</label>
+            </div>
+            <div class="form-check">
+              <input [(ngModel)]="productFeatured" [value]="true" class="form-check-input" formControlName="featured"
+                     id="RadioYes" type="radio">
+              <label class="form-check-label" for="RadioYes">Yes</label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block mt-3" type="submit">Add product</button>
+        </form>
       </div>
-
-      <button class="btn btn-primary btn-block mt-3" type="submit">Add product</button>
-    </form>
-
-  </div>
-</div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

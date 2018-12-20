@@ -1,52 +1,98 @@
-<div class="container col-6">
-  <button class="btn btn-secondary mt-3" routerLink="/admin/orders">Back</button>
+<nb-layout windowMode>
+  <nb-layout-header fixed>
+    <nb-actions size="small">
+      <nb-action icon="fa fa-arrow-left" routerLink="/admin/orders"></nb-action>
+      <nb-action>General Webshop</nb-action>
+    </nb-actions>
+  </nb-layout-header>
 
-  <div class="text-center mt-5">
-    <div class="card">
-      <div class="card-header">
-        <h1>Order Details</h1>
-      </div>
-      <div class="card-body">
-        <div *ngIf="order">
-          <h2>Order Number: </h2>
-          <p>{{order.orderNumber}}</p>
-          <h3>ID: </h3>
-          <p>{{order.id}}</p>
-          <h3>Full name: </h3>
-          <p>{{order.fullName}}</p>
-          <h3>Address: </h3>
-          <p>{{order.address}}</p>
-          <h3>Zipcode: </h3>
-          <p>{{order.zipcode}}</p>
-          <h3>City: </h3>
-          <p>{{order.city}}</p>
-          <h3>Country: </h3>
-          <p>{{order.country}}</p>
-          <h3>Phone Number: </h3>
-          <p>{{order.phoneNumber}}</p>
-          <h3>Email: </h3>
-          <p>{{order.email}}</p>
-          <h3>Comment: </h3>
-          <p>{{order.comment}}</p>
-          <h3>Order date: </h3>
-          <p>{{order.orderDate}}</p>
-          <h3>Is order delivered: </h3>
-          <p>{{order.isDelivered}}</p>
+  <nb-layout-column>
+    <div class="container col-6">
+      <div class="text-center mt-5">
+        <div class="card">
+          <div class="card-header">
+            <h1>Order Details</h1>
+          </div>
+          <div class="card-body">
+            <div *ngIf="order">
+              <h2>Order Number: </h2>
+              <p>{{order.orderNumber}}</p>
+              <h3>ID: </h3>
+              <p>{{order.orderId}}</p>
+              <h3>Full name: </h3>
+              <p>{{order.fullName}}</p>
+              <h3>Address: </h3>
+              <p>{{order.address}}</p>
+              <h3>Zipcode: </h3>
+              <p>{{order.zipcode}}</p>
+              <h3>City: </h3>
+              <p>{{order.city}}</p>
+              <h3>Country: </h3>
+              <p>{{order.country}}</p>
+              <h3>Phone Number: </h3>
+              <p>{{order.phoneNumber}}</p>
+              <h3>Email: </h3>
+              <p>{{order.email}}</p>
+              <h3>Comment: </h3>
+              <p>{{order.comment}}</p>
+              <h3>Order date: </h3>
+              <p>{{order.orderDate}}</p>
+              <h3>Is order delivered: </h3>
+              <p>{{order.isDelivered}}</p>
+
+              <div class="container">
+                <div>
+                  <div class="section-title text-center">
+                    <h1><span>Produkter</span></h1>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <div *ngIf="products" class="row">
+                  <div *ngFor="let product of products" class="col-sm-6 col-lg-3">
+                    <nb-card size="medium">
+                      <nb-card-header>
+                        <div class="product-img">
+                          <a>
+                            <img alt="" class="img-fluid" src="{{product.product.image}}">
+                          </a>
+                        </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <div class="category-title">
+                          <h5 class="title"><a>{{product.product.title}}</a></h5>
+                        </div>
+                      </nb-card-body>
+                      <nb-card-footer>
+                        <div class="price-stock">
+                          <h5 class="price">{{product.product.price}},- DKK</h5>
+
+                          <h6 class="amountInStock">
+                            Bestilt antal: {{product.qty}}
+                          </h6>
+                        </div>
+                      </nb-card-footer>
+                    </nb-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!order">
+              <h2>Order not found...</h2>
+            </div>
+          </div>
         </div>
-        <div *ngIf="!order">
-          <h2>Order not found...</h2>
-        </div>
+        <ng-template #confirmPop>
+          <div class="row justify-content-center">
+            <button (click)="shipped()" class="btn btn-success">Yes</button>
+          </div>
+        </ng-template>
+        <button [disabled]="disabled" [outsideClick]="true" [popover]="confirmPop"
+                class="btn btn-success mt-3 mb-5"
+                popoverTitle="Confirm packed & shipped order? If not, click outside this box.">Packed and shipped
+        </button>
       </div>
     </div>
-    <ng-template #confirmPop>
-      <div class="row justify-content-center">
-        <button (click)="shipped()" class="btn btn-success">Yes</button>
-      </div>
-    </ng-template>
-    <button [disabled]="disabled" [outsideClick]="true" [popover]="confirmPop"
-            class="btn btn-success mt-3 mb-5"
-            popoverTitle="Confirm packed & shipped order? If not, click outside this box.">Packed and shipped
-    </button>
-  </div>
-
-</div>
+  </nb-layout-column>
+</nb-layout>

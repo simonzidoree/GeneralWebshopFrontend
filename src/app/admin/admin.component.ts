@@ -5,7 +5,7 @@ import {Product} from '../shared/models/product';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
 
@@ -25,8 +25,8 @@ export class AdminComponent implements OnInit {
       });
   }
 
-  delete(id: number) {
-    this.productService.deleteProduct(id)
+  delete(productId: number) {
+    this.productService.deleteProduct(productId)
       .subscribe(() => {
         this.refresh();
       });

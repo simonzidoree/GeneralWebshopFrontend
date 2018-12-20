@@ -1,0 +1,105 @@
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
+
+    <div class="tr-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-info">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+            <li class="breadcrumb-item active"> Indkøbskurv</li>
+          </ol>
+          <div class="page-title">
+            <h1>Indkøbskurv</h1>
+          </div>
+        </div>
+      </div><!-- /.container -->
+    </div>
+
+    <div class="main-wrapper">
+      <div class="container">
+        <div class="tr-section products-description">
+          <div class="cart-title">
+            <span>Indkøbskurv</span>
+          </div>
+
+          <form action="#" class="woocommerce-cart-form">
+            <div class="item-info-menu">
+              <div class="row">
+                <div class="col-md-5">
+                  <span>Produkt</span>
+                </div>
+                <div class="col-lg-4 col-md-3">
+                </div>
+                <div class="col-md-2">
+                  <span>Antal</span>
+                </div>
+                <div class="col-lg-1 col-md-2">
+                  <span class="price">Pris</span>
+                </div>
+              </div><!-- /.row -->
+            </div>
+            <ul class="tr-list cart-list">
+              <ng-container *ngFor="let product of cartProducts">
+                <li *ngIf="product.numberOfProduct > 0" class="cart-item remove-item">
+                  <span (click)="removeFromCart(product.product)" class="remove-icon"><i aria-hidden="true"
+                                                                                         class="fa fa-times"></i></span>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="product">
+                        <a routerLink="product-detail/{{product.product.productId}}">
+                                                <span class="product-image">
+                                                    <img alt="Image" class="img-fluid"
+                                                         src='{{product.product.image}}'>
+                                                </span>
+                          <span class="product-title">{{product.product.title}}</span>
+                          <span class="color"></span>
+                        </a>
+                      </div><!-- /.product -->
+                    </div>
+                    <div class="col-lg-4 col-md-3">
+                      <div class="tr-color">
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="product-quantity ml-2">
+                        {{product.numberOfProduct}}
+                      </div>
+                    </div>
+                    <div class="col-lg-1 col-md-2">
+                      <span class="price">{{product.product.price * product.numberOfProduct}},- DKK</span>
+                      <small class="text-muted">{{product.product.price}},-</small>
+                    </div>
+                  </div>
+                </li>
+              </ng-container>
+            </ul>
+          </form>
+          <ul class="tr-list cart-totals">
+            <li>
+              <div class="row">
+                <div class="col-8 col-lg-11 col-md-10">
+                  <span>Total</span>
+                </div>
+                <div class="col-4 col-lg-1 col-md-2">
+                  <span class="price"><b>{{totalPrice}},- DKK</b></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="buttons">
+            <a class="btn btn-primary button-back pull-left" routerLink="">Tilbage</a>
+            <a class="btn btn-primary pull-right" routerLink="/checkout">Godkend ordren og forsæt</a>
+          </div>
+        </div><!-- /.products-description -->
+
+      </div><!-- /.container -->
+    </div>
+
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>

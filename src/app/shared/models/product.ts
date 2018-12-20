@@ -1,9 +1,10 @@
 export class Product {
-  id: number;
+  productId: number;
   title: string;
   description: string;
   price: number;
   image: string;
   amountInStock: number;
   featured: boolean;
+  category: string;
 }

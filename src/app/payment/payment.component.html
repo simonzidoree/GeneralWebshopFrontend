@@ -1,0 +1,58 @@
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
+
+    <div class="tr-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-info">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+            <li class="breadcrumb-item active"> Betaling</li>
+          </ol>
+          <div class="page-title">
+            <h1>Betaling</h1>
+          </div>
+        </div>
+      </div><!-- /.container -->
+    </div>
+
+    <div class="main-wrapper">
+      <div class="container">
+        <div class="tr-section products-description">
+          <div class="cart-title">
+            <span>Betaling</span>
+          </div>
+
+          <form action="#" class="contact-form" method="post" name="contact-form">
+            <div class="payment-category">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <input checked="checked" id="paypal" name="sellType1" type="radio" value="paypal">
+                      <label for="paypal">MobilePay</label>
+                      <div class="payment-card">
+                        <img alt="Logo" class="img-fluid" src="../../assets/GeneralWebshop-MP.png">
+                      </div>
+                      <p>Kræver MobilePay app.</p>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.row -->
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary button-back pull-left" routerLink="/checkout">Tilbage</a>
+              <a class="btn btn-primary pull-right" routerLink="/success">Betal</a>
+            </div>
+          </form>
+        </div><!-- /.products-description -->
+      </div><!-- /.container -->
+    </div>
+
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>

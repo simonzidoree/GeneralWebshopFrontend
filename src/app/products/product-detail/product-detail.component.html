@@ -1,0 +1,80 @@
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
+
+    <div class="tr-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-info">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+            <li class="breadcrumb-item active"> Produktinformation</li>
+          </ol>
+          <div class="page-title">
+            <h1>Produktinformation</h1>
+          </div>
+        </div>
+      </div><!-- /.container -->
+    </div>
+
+    <div class="main-wrapper product-details">
+      <div *ngIf="product" class="container">
+        <div class="row">
+          <div class="col-md-4 col-lg-2">
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <div class="tr-section product-details">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="tr-product">
+                    <img alt="" class="img-fluid" src="{{product.image}}">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="products-details-info">
+                    <span class="product-title">Kategori</span>
+                    <h1>{{product.title}}</h1>
+                    <div class="quantity-price">
+                      <div class="price">
+                        <span>{{product.price}},- DKK</span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="product-btn">
+                    <div class="add-to-cart">
+                      <a (click)="addToCart(product)" class="btn btn-primary" style="cursor: pointer;">Tilføj til
+                        kurven</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.product-details -->
+
+            <div class="tr-section products-description">
+              <ul class="nav nav-tabs description-tabs" role="tablist">
+                <li class="nav-item" role="presentation"><a aria-controls="details" aria-selected="true"
+                                                            class="nav-link active show" data-toggle="tab"
+                                                            href="#details"
+                                                            role="tab">Beskrivelse</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane fade active show" id="details" role="tabpanel">
+                  <p>{{product.description}}</p>
+                </div><!-- /.tab-pane -->
+              </div><!-- /.tab-content -->
+            </div><!-- /.products-description -->
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </div>
+    <div *ngIf="!product" style="text-align: center">
+      Produkt information kunne ikke indlæses...
+    </div>
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>

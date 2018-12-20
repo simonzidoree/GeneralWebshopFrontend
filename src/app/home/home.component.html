@@ -1,3 +1,57 @@
-<p>
-  home works!
-</p>
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
+
+    <div class="container">
+      <div>
+        <div class="section-title text-center">
+          <h1><span>Fremhævet Produkter</span></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div *ngIf="products" class="row">
+        <div *ngFor="let product of products" class="col-sm-6 col-lg-3">
+          <nb-card size="medium">
+            <nb-card-header>
+              <div class="product-img">
+                <a routerLink="product-detail/{{product.productId}}">
+                  <img alt="" class="img-fluid" src="{{product.image}}">
+                </a>
+
+                <a (click)="addToCart(product, $event)" [ngClass]="{added: toggleAdded}" class="add-to-cart"
+                   style="cursor: pointer">
+                  <i class="fas fa-shopping-basket"></i><span>LÆG I KURV</span></a>
+              </div>
+            </nb-card-header>
+            <nb-card-body>
+              <div class="category-title">
+
+                <h5 class="title"><a routerLink="product-detail/{{product.productId}}">{{product.title}}</a></h5>
+                <a class="cat" routerLink="/products/{{product.category}}">{{product.category}}</a>
+
+              </div>
+            </nb-card-body>
+            <nb-card-footer>
+              <div class="price-stock">
+                <h5 class="price">{{product.price}},- DKK</h5>
+
+                <h6 class="amountInStock">
+                  Lager: {{product.amountInStock}} stk.
+                </h6>
+              </div>
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+    </div>
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>

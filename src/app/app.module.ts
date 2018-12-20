@@ -16,6 +16,32 @@ import {ProductUpdateComponent} from './admin/products/product-update/product-up
 import {OrdersComponent} from './admin/orders/orders/orders.component';
 import {OrderUpdateComponent} from './admin/orders/order-update/order-update.component';
 import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.component';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  NbActionsModule,
+  NbButtonModule,
+  NbCardModule,
+  NbLayoutModule,
+  NbProgressBarModule,
+  NbSearchModule,
+  NbSearchService,
+  NbSelectModule,
+  NbSidebarModule,
+  NbSidebarService,
+  NbSpinnerModule,
+  NbTabsetModule,
+  NbThemeModule,
+  NbToastrModule
+} from '@nebular/theme';
+import {FooterComponent} from './shared/footer/footer.component';
+import {ProductDetailComponent} from './products/product-detail/product-detail.component';
+import {CartComponent} from './cart/cart.component';
+import {HeaderComponent} from './shared/header/header.component';
+import {CheckoutComponent} from './checkout/checkout.component';
+import {ProductsComponent} from './products/products/products.component';
+import {PaymentComponent} from './payment/payment.component';
+import {SuccessComponent} from './success/success.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +53,16 @@ import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.com
     ProductUpdateComponent,
     OrdersComponent,
     OrderUpdateComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    NavbarComponent,
+    FooterComponent,
+    ProductDetailComponent,
+    HeaderComponent,
+    CartComponent,
+    CheckoutComponent,
+    ProductsComponent,
+    PaymentComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -38,12 +73,28 @@ import {OrderDetailComponent} from './admin/orders/order-detail/order-detail.com
     PopoverModule.forRoot(),
     ButtonsModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({name: 'default'}),
+    NbLayoutModule,
+    NbSidebarModule,
+    NbSearchModule,
+    NbButtonModule,
+    NbCardModule,
+    NbTabsetModule,
+    NbSpinnerModule,
+    NbProgressBarModule,
+    NbActionsModule,
+    NbSelectModule,
+    NbToastrModule.forRoot({destroyByClick: true}),
   ],
   providers: [
     AuthGuard,
-    AuthenticationService
+    AuthenticationService,
+    NbSidebarService,
+    NbSearchService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

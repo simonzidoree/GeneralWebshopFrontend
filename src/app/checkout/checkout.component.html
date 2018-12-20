@@ -1,0 +1,135 @@
+<nb-layout withScroll>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+  <nb-layout-column>
+
+    <div class="tr-breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-info">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+            <li class="breadcrumb-item active"> Levering</li>
+          </ol>
+          <div class="page-title">
+            <h1>Levering</h1>
+          </div>
+        </div>
+      </div><!-- /.container -->
+    </div>
+
+    <div class="main-wrapper">
+      <div class="container">
+        <div class="tr-section products-description">
+          <div class="cart-title">
+            <span>Levering</span>
+          </div>
+
+          <form (ngSubmit)="save()" [formGroup]="checkoutForm" action="#" class="contact-form" name="contact-form"
+                novalidate>
+            <ul class="tr-list delivery-category">
+              <li>
+                <input checked="checked" id="free-delivery" name="sellType" type="radio" value="free-delivery">
+                <label for="free-delivery">Gratis Levering</label>
+              </li>
+            </ul>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="fullName">Navn (husk efternavn)</label>
+                  <input class="form-control d-block w-100" formControlName="fullName" id="fullName"
+                         placeholder="Lars Larsen"
+                         required="required" type="text" value="">
+                  <div class="invalid-feedback">
+                    Gyldigt navn er påkrævet.
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input class="form-control" formControlName="email" id="email" placeholder="mail@mail.dk"
+                         required="required" type="email">
+                  <div class="invalid-feedback">
+                    Indtast venligst en gyldig email-adresse for forsendelsesopdateringer.
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="phoneNumber">Telefon</label>
+                  <input class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="12345678"
+                         required="required" type="number">
+                  <div class="invalid-feedback">
+                    Indtast venligst et gyldigt telefonnummer.
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group address">
+                  <label for="address">Adresse</label>
+                  <input class="form-control" formControlName="address" id="address" placeholder="Adresse 12"
+                         required="required"
+                         type="text">
+                  <div class="invalid-feedback">
+                    Indtast venligst din leveringsadresse.
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="city">By</label>
+                  <input class="form-control" formControlName="city" id="city" placeholder="Esbjerg"
+                         required="required" type="text">
+                  <div class="invalid-feedback">
+                    Angiv venligst en gyldig by.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group form-control-after">
+                  <label for="country">Land</label>
+                  <select class="form-control" formControlName="country" id="country" required type="text">
+                    <option>Danmark</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Vælg venligst et gyldigt land.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="zipcode">Postnr.</label>
+                  <input class="form-control" formControlName="zipcode" id="zipcode" placeholder="6700"
+                         required="required" type="number">
+                  <div class="invalid-feedback">
+                    Postnummer er påkrævet.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="comment">Kommentar</label>
+                  <textarea class="form-control" formControlName="comment" id="comment" placeholder="..."
+                            required="required" type="text"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="buttons">
+              <a class="btn btn-primary button-back pull-left" routerLink="/cart" style="cursor: pointer">Tilbage</a>
+              <button class="btn btn-primary pull-right" style="cursor: pointer" type="submit">Godkend
+                oplysninger og betal
+              </button>
+            </div>
+          </form>
+        </div><!-- /.products-description -->
+
+      </div><!-- /.container -->
+    </div>
+
+
+  </nb-layout-column>
+  <nb-layout-footer>
+    <app-footer></app-footer>
+  </nb-layout-footer>
+</nb-layout>

@@ -10,7 +10,7 @@ import {OrderService} from '../../../shared/services/order.service';
 })
 export class OrderUpdateComponent implements OnInit {
 
-  id: number;
+  orderId: number;
 
   orderForm = new FormGroup({
     orderNumber: new FormControl(''),
@@ -33,9 +33,9 @@ export class OrderUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
+    this.orderId = +this.route.snapshot.paramMap.get('orderId');
 
-    this.orderService.getOrderById(this.id)
+    this.orderService.getOrderById(this.orderId)
       .subscribe(orderFromRest => {
         this.orderForm.patchValue({
           orderNumber: orderFromRest.orderNumber,
@@ -55,7 +55,7 @@ export class OrderUpdateComponent implements OnInit {
 
   save() {
     const order = this.orderForm.value;
-    order.id = this.id;
+    order.orderId = this.orderId;
     this.orderService.updateOrder(order)
       .subscribe(() => {
         this.router.navigateByUrl('/admin/orders');

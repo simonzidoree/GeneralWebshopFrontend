@@ -1,0 +1,29 @@
+<div class="header-container left">
+  <div class="logo-containter">
+    <a class="logo" href=""><img alt="" src="../../../assets/generalwebshop-blue.png"></a>
+    <div class="name">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+             id="navbarDropdown" role="button">
+            Produkter
+          </a>
+          <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+            <a *ngFor="let category of productCategories" class="dropdown-item"
+               routerLink="/products/{{category}}">{{category}}</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="header-container">
+  <nb-actions
+    size="small">
+    <nb-action badgePosition="top right"
+               badgeStatus="success"
+               badgeText="{{cart.length}}" class="control-item" icon="fas fa-shopping-basket"
+               routerLink="/cart"></nb-action>
+  </nb-actions>
+</div>

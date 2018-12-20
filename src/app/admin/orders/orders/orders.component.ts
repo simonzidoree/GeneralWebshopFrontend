@@ -25,8 +25,8 @@ export class OrdersComponent implements OnInit {
       });
   }
 
-  delete(id: number) {
-    this.orderService.deleteOrder(id)
+  delete(orderId: number) {
+    this.orderService.deleteOrder(orderId)
       .subscribe(() => {
         this.refresh();
       });

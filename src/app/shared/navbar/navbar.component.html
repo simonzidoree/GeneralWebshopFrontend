@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <a class="navbar-brand" routerLink=""><i class="fa fa-home"></i></a>
+  <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+          class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+           id="navbarDropdown" role="button">
+          Produkter
+        </a>
+        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a *ngFor="let category of productCategories" class="dropdown-item"
+             routerLink="/products/{{category}}">{{category}}</a>
+        </div>
+      </li>
+    </ul>
+    <div class="my-2 my-lg-0">
+      <a class="nav-link" role="button" routerLink="/cart"><i class="fa fa-lg fa-shopping-cart mr-2"></i>Indkøbsvogn</a>
+    </div>
+  </div>
+</nav>
