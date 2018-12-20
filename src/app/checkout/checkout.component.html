@@ -8,7 +8,7 @@
       <div class="container">
         <div class="breadcrumb-info">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="">Hjem</a></li>
             <li class="breadcrumb-item active"> Levering</li>
           </ol>
           <div class="page-title">
@@ -59,7 +59,7 @@
                 <div class="form-group">
                   <label for="phoneNumber">Telefon</label>
                   <input class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="12345678"
-                         required="required" type="number">
+                         max="99999999" maxlength="8" min="00000000" required="required" type="number">
                   <div class="invalid-feedback">
                     Indtast venligst et gyldigt telefonnummer.
                   </div>
@@ -101,7 +101,7 @@
                 <div class="form-group">
                   <label for="zipcode">Postnr.</label>
                   <input class="form-control" formControlName="zipcode" id="zipcode" placeholder="6700"
-                         required="required" type="number">
+                         max="9999" maxlength="4" min="1000" required="required" type="number">
                   <div class="invalid-feedback">
                     Postnummer er påkrævet.
                   </div>

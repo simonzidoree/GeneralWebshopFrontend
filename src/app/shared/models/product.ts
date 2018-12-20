@@ -1,5 +1,7 @@
+import {OrderLine} from './OrderLine';
+
 export class Product {
-  productId: number;
+  productId?: number;
   title: string;
   description: string;
   price: number;
@@ -7,4 +9,5 @@ export class Product {
   amountInStock: number;
   featured: boolean;
   category: string;
+  orderLines?: OrderLine[];
 }

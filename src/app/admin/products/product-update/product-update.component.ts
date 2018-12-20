@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../../shared/services/product.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Product} from '../../../shared/models/product';
+import {OrderLine} from '../../../shared/models/OrderLine';
 
 @Component({
   selector: 'app-product-update',
@@ -14,6 +15,7 @@ export class ProductUpdateComponent implements OnInit {
   productId: number;
   products: Product[];
   productCategories: string[] = [];
+  orderLinesFromRest: OrderLine[] = [];
 
   productForm = new FormGroup({
     title: new FormControl(''),
@@ -54,6 +56,7 @@ export class ProductUpdateComponent implements OnInit {
               existingCategory: productFromRest.category
             });
             this.productFeatured = productFromRest.featured;
+            this.orderLinesFromRest = productFromRest.orderLines;
           });
       });
   }
@@ -66,6 +69,18 @@ export class ProductUpdateComponent implements OnInit {
       product.category = this.productForm.get('newCategory').value;
     }
     product.productId = this.productId;
+
+    product.orderLines = [];
+
+    this.orderLinesFromRest.forEach(order => {
+      const ordr = order as OrderLine;
+      product.orderLines.push({
+        orderId: ordr.orderId,
+        qty: ordr.qty,
+        priceWhenBought: ordr.priceWhenBought
+      });
+    });
+
     this.productService.updateProduct(product)
       .subscribe(() => {
         this.router.navigateByUrl('/admin');

@@ -4,4 +4,56 @@
   .main-wrapper {
     padding: 50px 0;
   }
+
+  .left {
+    display: flex;
+    width: 100%;
+    order: 0;
+    flex-direction: row;
+  }
+
+  .right {
+    order: 1;
+    flex-direction: row-reverse;
+  }
+
+  .control-item {
+    display: block;
+  }
+
+  .logo-containter {
+    display: flex;
+    align-items: center;
+    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+    .logo {
+      @include nb-ltr(padding-right, nb-theme(padding));
+      @include nb-rtl(padding-left, nb-theme(padding));
+      font-size: 2.5rem;
+      text-decoration: none;
+
+      img {
+        max-height: 50px;
+      }
+    }
+
+    .name {
+      padding: 0 nb-theme(padding);
+      font-size: 24px;
+      font-weight: 300;
+      @include nb-ltr(border-left, 1px solid nb-theme(separator));
+      @include nb-rtl(border-right, 1px solid nb-theme(separator));
+      white-space: nowrap;
+
+      span {
+        font-weight: nb-theme(font-weight-normal);
+      }
+    }
+  }
 }

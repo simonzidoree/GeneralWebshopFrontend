@@ -1,8 +1,13 @@
 <nb-layout windowMode>
   <nb-layout-header fixed>
-    <nb-actions size="small">
-      <nb-action>General Webshop</nb-action>
-    </nb-actions>
+    <div class="header-container left">
+      <div class="logo-containter">
+        <a class="logo"><img alt="" src="../../assets/generalwebshop-blue.png"></a>
+        <div class="name">
+          <span>Admin</span> panel
+        </div>
+      </div>
+    </div>
   </nb-layout-header>
 
   <nb-layout-column>
@@ -10,16 +15,16 @@
       <div class="container">
         <div class="btn-toolbar justify-content-between" role="toolbar">
 
-          <button class="btn btn-primary" routerLink="/admin/product-add">Add product</button>
+          <button class="btn btn-primary" routerLink="/admin/product-add">Tilføj et produkt</button>
 
-          <button class="btn btn-info" routerLink="/admin/orders">View orders</button>
+          <button class="btn btn-info" routerLink="/admin/orders">Se ordrer</button>
 
         </div>
 
         <div *ngIf="!products" class="row">
           <progressbar [animate]="true" [striped]="true" [value]="100" class="mt-5 col-12 pr-0 pl-0" type="success">
-            Loading
-            products...
+            Indlæser
+            produkter...
           </progressbar>
         </div>
 
@@ -37,20 +42,31 @@
                 <div class="product-details">
                   <img alt="" height="100%" src='{{product.image}}' width="100%">
                   <div class="float-left">
-                    <h5>Price: </h5>
+                    <h5>Pris: </h5>
                     <p>{{product.price}},- DKK</p>
                   </div>
                   <div class="float-right">
-                    <h5>Stock: </h5>
-                    <p>{{product.amountInStock}}</p>
+                    <h5>Lager: </h5>
+                    <p>{{product.amountInStock}} stk.</p>
                   </div>
                 </div>
               </nb-card-body>
               <nb-card-footer>
                 <div class="btn-group d-flex">
-                  <button class="btn btn-info mr-1 w-100" routerLink="/admin/product-update/{{product.productId}}">Edit
+                  <button class="btn btn-info mr-1 w-100" routerLink="/admin/product-update/{{product.productId}}">
+                    Rediger
                   </button>
-                  <button (click)="delete(product.productId)" class="btn btn-danger w-100">Delete</button>
+
+                  <ng-template #confirmPop>
+                    <div class="row justify-content-center">
+                      <button (click)="delete(product.productId)" class="btn btn-success">Ja</button>
+                    </div>
+                  </ng-template>
+                  <button [outsideClick]="true" [popover]="confirmPop"
+                          class="btn btn-danger w-100"
+                          popoverTitle="Er du sikker på du vil slette dette produkt? Hvis ikke, klik uden for denne boks.">
+                    Slet
+                  </button>
                 </div>
               </nb-card-footer>
             </nb-card>
